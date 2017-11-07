@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="划船不用浆，一生全靠浪">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="1.水平居中1.1行内元素 text-align：center  1.2块级元素 margin：0 auto  1.3多个块级元素 子元素设置为inline-block类型，同时父元素设置属性 text-align: center; display：flex，justify-content：center  2.垂直居中2.1行内元素 单行行内元素 1.设置padding-top，padding-b">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="居中案例">
+<meta property="og:url" content="http://yoursite.com/2017/11/07/居中案例/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="划船不用浆，一生全靠浪">
+<meta property="og:description" content="1.水平居中1.1行内元素 text-align：center  1.2块级元素 margin：0 auto  1.3多个块级元素 子元素设置为inline-block类型，同时父元素设置属性 text-align: center; display：flex，justify-content：center  2.垂直居中2.1行内元素 单行行内元素 1.设置padding-top，padding-b">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-07T13:51:47.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="划船不用浆，一生全靠浪">
+<meta name="twitter:title" content="居中案例">
+<meta name="twitter:description" content="1.水平居中1.1行内元素 text-align：center  1.2块级元素 margin：0 auto  1.3多个块级元素 子元素设置为inline-block类型，同时父元素设置属性 text-align: center; display：flex，justify-content：center  2.垂直居中2.1行内元素 单行行内元素 1.设置padding-top，padding-b">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/07/居中案例/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>居中案例 | Hexo</title>
   
 
 
@@ -143,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-  page-home">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,9 +228,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -259,9 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/07/居中案例/" itemprop="url">居中案例</a></h1>
+          <h1 class="post-title" itemprop="name headline">居中案例</h1>
         
 
         <div class="post-meta">
@@ -333,9 +332,7 @@
       
 
       
-        
-          
-            <h1 id="1-水平居中"><a href="#1-水平居中" class="headerlink" title="1.水平居中"></a>1.水平居中</h1><h2 id="1-1行内元素"><a href="#1-1行内元素" class="headerlink" title="1.1行内元素"></a>1.1行内元素</h2><ul>
+        <h1 id="1-水平居中"><a href="#1-水平居中" class="headerlink" title="1.水平居中"></a>1.水平居中</h1><h2 id="1-1行内元素"><a href="#1-1行内元素" class="headerlink" title="1.1行内元素"></a>1.1行内元素</h2><ul>
 <li>text-align：center</li>
 </ul>
 <h2 id="1-2块级元素"><a href="#1-2块级元素" class="headerlink" title="1.2块级元素"></a>1.2块级元素</h2><ul>
@@ -375,8 +372,6 @@
 <h1 id="3-垂直和水平居中"><a href="#3-垂直和水平居中" class="headerlink" title="3.垂直和水平居中"></a>3.垂直和水平居中</h1><h2 id="3-1固定大小元素"><a href="#3-1固定大小元素" class="headerlink" title="3.1固定大小元素"></a>3.1固定大小元素</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span>&#123;</div><div class="line">	<span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.child</span>&#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line"></div><div class="line">	<span class="attribute">position</span>: absolute;</div><div class="line">	<span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line"></div><div class="line">	<span class="attribute">margin</span>: -<span class="number">70px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">170px</span>;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <h2 id="3-2未知大小元素"><a href="#3-2未知大小元素" class="headerlink" title="3.2未知大小元素"></a>3.2未知大小元素</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span>&#123;</div><div class="line">	<span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.child</span>&#123;</div><div class="line">	<span class="attribute">position</span>: absolute;</div><div class="line">	<span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">transform</span>: ( -<span class="number">50%</span>,-<span class="number">50%</span>);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <h2 id="3-3-使用flex布局"><a href="#3-3-使用flex布局" class="headerlink" title="3.3 使用flex布局"></a>3.3 使用flex布局</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span>&#123;</div><div class="line">	<span class="attribute">display</span>: flex;</div><div class="line">	<span class="attribute">justify-content</span>: center;</div><div class="line">	<span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
       
     </div>
     
@@ -391,14 +386,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -408,10 +409,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -419,6 +421,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -439,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -506,6 +521,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-水平居中"><span class="nav-number">1.</span> <span class="nav-text">1.水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1行内元素"><span class="nav-number">1.1.</span> <span class="nav-text">1.1行内元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2块级元素"><span class="nav-number">1.2.</span> <span class="nav-text">1.2块级元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3多个块级元素"><span class="nav-number">1.3.</span> <span class="nav-text">1.3多个块级元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-垂直居中"><span class="nav-number">2.</span> <span class="nav-text">2.垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1行内元素"><span class="nav-number">2.1.</span> <span class="nav-text">2.1行内元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2块级元素"><span class="nav-number">2.2.</span> <span class="nav-text">2.2块级元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-垂直和水平居中"><span class="nav-number">3.</span> <span class="nav-text">3.垂直和水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1固定大小元素"><span class="nav-number">3.1.</span> <span class="nav-text">3.1固定大小元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2未知大小元素"><span class="nav-number">3.2.</span> <span class="nav-text">3.2未知大小元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-使用flex布局"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 使用flex布局</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -639,6 +670,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
