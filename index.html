@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="划船不用浆，一生全靠浪">
+<meta name="description" content="专注于前端">
 <meta property="og:type" content="website">
 <meta property="og:title" content="J.L&#39;s BLOG">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="划船不用浆，一生全靠浪">
+<meta property="og:description" content="专注于前端">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="J.L&#39;s BLOG">
-<meta name="twitter:description" content="划船不用浆，一生全靠浪">
+<meta name="twitter:description" content="专注于前端">
 
 
 
@@ -160,7 +160,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">划船不用浆，一生全靠浪</p>
       
   </div>
 
@@ -242,6 +242,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/12/CSS基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/CSS基础/" itemprop="url">CSS基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T11:31:05+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/CSS基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/12/CSS基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h1><h2 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h2><pre><code>* 形影分离--为盒子添加效果还是作用在原来的位置，影子出去了，不脱标.
+</code></pre><h3 id="相对定位用途"><a href="#相对定位用途" class="headerlink" title="相对定位用途"></a>相对定位用途</h3><ul>
+<li>微调元素</li>
+<li>绝对定位的参考（子绝父相）</li>
+</ul>
+<h2 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h2><pre><code>* 脱标有三（float、absolute、fixed）
+</code></pre><h4 id="脱离标准文档流后，就没有行内元素和块级元素之分了（原行内元素可设置宽高，无需设置display：block）"><a href="#脱离标准文档流后，就没有行内元素和块级元素之分了（原行内元素可设置宽高，无需设置display：block）" class="headerlink" title="脱离标准文档流后，就没有行内元素和块级元素之分了（原行内元素可设置宽高，无需设置display：block）"></a>脱离标准文档流后，就没有行内元素和块级元素之分了（原行内元素可设置宽高，无需设置display：block）</h4><ul>
+<li>如果用top来描述，其位置是相对与页面左上角</li>
+<li>如果用bottom来描述，其位置是相对与浏览器首屏页面的左下角</li>
+<li>子绝父绝、子绝父相、子绝父固都可以给儿子定位（子绝父相.父亲并无脱标.儿子在父亲范围内移动）</li>
+<li>子绝父相是相对于最近的定位元素</li>
+<li>绝对定位的儿子、无视参考点的padding，以border内侧为参考点 </li>
+</ul>
+<h1 id="margin-and-padding"><a href="#margin-and-padding" class="headerlink" title="margin and padding"></a>margin and padding</h1><pre><code>* 为子元素同时设置padding和margin，padding填充的是子元素的bg，margin填充的是父亲的bg
+</code></pre><h2 id="margin"><a href="#margin" class="headerlink" title="margin"></a>margin</h2><h3 id="何时用margin、padding？"><a href="#何时用margin、padding？" class="headerlink" title="何时用margin、padding？"></a>何时用margin、padding？</h3><h4 id="隔开元素与元素用margin"><a href="#隔开元素与元素用margin" class="headerlink" title="隔开元素与元素用margin"></a>隔开元素与元素用margin</h4><ul>
+<li>margin塌陷(only竖直方向)，即标准文档流中，竖直方向的margin不叠加，以较大的为准。<ul>
+<li>在俩margin中间添加一个border即可消除塌陷现象<h4 id="margin：0-auto-居中的是盒子。（必要条件：1-标准流中-2-定宽）"><a href="#margin：0-auto-居中的是盒子。（必要条件：1-标准流中-2-定宽）" class="headerlink" title="margin：0 auto 居中的是盒子。（必要条件：1.标准流中 2.定宽）"></a>margin：0 auto 居中的是盒子。（必要条件：1.标准流中 2.定宽）</h4><h4 id="text-align：center-居中的是盒子中的文字"><a href="#text-align：center-居中的是盒子中的文字" class="headerlink" title="text-align：center 居中的是盒子中的文字"></a>text-align：center 居中的是盒子中的文字</h4><h4 id="margin这个属性，本质上描述的是兄弟和兄弟之间的距离；-最好不要用这个margin表达父子之间的距离。"><a href="#margin这个属性，本质上描述的是兄弟和兄弟之间的距离；-最好不要用这个margin表达父子之间的距离。" class="headerlink" title="margin这个属性，本质上描述的是兄弟和兄弟之间的距离； 最好不要用这个margin表达父子之间的距离。"></a>margin这个属性，本质上描述的是兄弟和兄弟之间的距离； 最好不要用这个margin表达父子之间的距离。</h4></li>
+</ul>
+</li>
+</ul>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><h4 id="隔开元素与内容用padding"><a href="#隔开元素与内容用padding" class="headerlink" title="隔开元素与内容用padding"></a>隔开元素与内容用padding</h4><h4 id="善于使用父亲的padding，而不是儿子的margin"><a href="#善于使用父亲的padding，而不是儿子的margin" class="headerlink" title="善于使用父亲的padding，而不是儿子的margin"></a>善于使用父亲的padding，而不是儿子的margin</h4><ul>
+<li>如果父亲没有border，那么儿子的margin实际上踹的是“流”，踹的是这“行”。所以，父亲整体也掉下来了</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/10/原生JS-forEach-和map-遍历的区别以及兼容写法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -286,6 +439,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/10/原生JS-forEach-和map-遍历的区别以及兼容写法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/10/原生JS-forEach-和map-遍历的区别以及兼容写法/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -452,6 +616,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/07/居中案例/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/07/居中案例/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -592,7 +767,7 @@
                 alt="Jeffrey Liu" />
             
               <p class="site-author-name" itemprop="name">Jeffrey Liu</p>
-              <p class="site-description motion-element" itemprop="description">划船不用浆，一生全靠浪</p>
+              <p class="site-description motion-element" itemprop="description">专注于前端</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -602,7 +777,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -792,6 +967,14 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
 
   
 
