@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JS Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。concat()  方法 用于连接两个或多个数组。 语法 arrayObject.concat(arrayX,arrayX,……,arrayX) (arrayX)必需。该参数可以是具体的值，也可以是数组对象。可以是任意多个123var colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;]; var col">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS Array">
+<meta property="og:url" content="http://yoursite.com/2017/11/12/JS-Array/index.html">
+<meta property="og:site_name" content="J.L&#39;s BLOG">
+<meta property="og:description" content="JS Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。concat()  方法 用于连接两个或多个数组。 语法 arrayObject.concat(arrayX,arrayX,……,arrayX) (arrayX)必需。该参数可以是具体的值，也可以是数组对象。可以是任意多个123var colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;]; var col">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-12T10:21:07.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS Array">
+<meta name="twitter:description" content="JS Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。concat()  方法 用于连接两个或多个数组。 语法 arrayObject.concat(arrayX,arrayX,……,arrayX) (arrayX)必需。该参数可以是具体的值，也可以是数组对象。可以是任意多个123var colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;]; var col">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/12/JS-Array/"/>
+
+
+
+
+
+  <title>JS Array | J.L's BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">J.L's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">划船不用浆，一生全靠浪</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/12/JS-Array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS Array</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T18:19:34+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/JS-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/12/JS-Array/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JS-Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。"><a href="#JS-Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。" class="headerlink" title="JS Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。"></a><code>JS Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。</code></h1><h1 id="concat-方法-用于连接两个或多个数组。"><a href="#concat-方法-用于连接两个或多个数组。" class="headerlink" title="concat()  方法 用于连接两个或多个数组。"></a>concat()  方法 用于连接两个或多个数组。</h1><ul>
+<li><p>语法</p>
+<h4 id="arrayObject-concat-arrayX-arrayX-……-arrayX"><a href="#arrayObject-concat-arrayX-arrayX-……-arrayX" class="headerlink" title="arrayObject.concat(arrayX,arrayX,……,arrayX)"></a>arrayObject.concat(arrayX,arrayX,……,arrayX)</h4><ol>
+<li>(arrayX)必需。该参数可以是具体的值，也可以是数组对象。可以是任意多个<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]; </div><div class="line"><span class="keyword">var</span> colors2 = colors.concat(<span class="string">"yellow"</span>, [<span class="string">"black"</span>, <span class="string">"brown"</span>]); <span class="comment">//  ["red", "green", "blue", "yellow", "black", "brown"]</span></div><div class="line"><span class="keyword">var</span> colors3 = colors.concat(); <span class="comment">// ["red", "green", "blue"]</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li>返回一个新的数组。该数组是通过把所有 arrayX 参数添加到 arrayObject 中生成的。如果要进行 concat() 操作的参数是数组，那么添加的是数组中的元素，而不是数组。</li>
+</ul>
+</li>
+</ul>
+<h1 id="join-方法-把数组中的所有元素放入一个字符串"><a href="#join-方法-把数组中的所有元素放入一个字符串" class="headerlink" title="join()  方法 把数组中的所有元素放入一个字符串"></a>join()  方法 把数组中的所有元素放入一个字符串</h1><ul>
+<li><p>语法</p>
+<h4 id="arrayObject-join-separator"><a href="#arrayObject-join-separator" class="headerlink" title="arrayObject.join(separator)"></a>arrayObject.join(separator)</h4><ol>
+<li>(separator)可选。指定要使用的分隔符。如果省略该参数，则使用逗号作为分隔符<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]; </div><div class="line"><span class="keyword">var</span> colors3 = colors.join(); <span class="comment">// "red,green,blue"</span></div><div class="line"><span class="keyword">var</span> colors4 = colors.join(<span class="string">'.'</span>); <span class="comment">// red.green.blue</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li>返回一个字符串。该字符串是通过把 arrayObject 的每个元素转换为字符串，然后把这些字符串连接起来，在两个元素之间插入 separator 字符串而生成的。</li>
+</ul>
+</li>
+</ul>
+<h1 id="slice-方法-从已有的数组中返回选定的元素。"><a href="#slice-方法-从已有的数组中返回选定的元素。" class="headerlink" title="slice()  方法 从已有的数组中返回选定的元素。"></a>slice()  方法 从已有的数组中返回选定的元素。</h1><ul>
+<li><p>语法</p>
+<h4 id="arrayObject-slice-start-end"><a href="#arrayObject-slice-start-end" class="headerlink" title="arrayObject.slice(start,end)"></a>arrayObject.slice(start,end)</h4><ol>
+<li>(start)必需。规定从何处开始选取。如果是负数，那么从数组尾部开始算起</li>
+<li>(end)可选。规定从何处结束选取。如果是负数，那么从数组尾部开始算起<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>];</div><div class="line"><span class="keyword">var</span> colors2 = colors.slice(<span class="number">1</span>); <span class="comment">// ["green", "blue", "yellow", "purple"]  从第一项到末尾</span></div><div class="line"><span class="keyword">var</span> colors3 = colors.slice(<span class="number">1</span>,<span class="number">4</span>) <span class="comment">// ["green", "blue", "yellow"] 起始项到结束项，但不包含结束项</span></div><div class="line"><span class="comment">// 如果参数有负数，则参数加上数组长度。eg array.length=5, slice(-2,-1)与slice(3,4) 返回一样</span></div><div class="line"><span class="comment">// 如果结束位置小于起始位置，则返回空数组。</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素</li>
+</ul>
+</li>
+<li><p>说明</p>
+<ul>
+<li>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</li>
+</ul>
+</li>
+</ul>
+<h1 id="splice-方法-向-从数组中添加-删除项目，然后返回被删除的项目。》》》（splice方法会改变原数组）"><a href="#splice-方法-向-从数组中添加-删除项目，然后返回被删除的项目。》》》（splice方法会改变原数组）" class="headerlink" title="splice()  方法 向/从数组中添加/删除项目，然后返回被删除的项目。》》》（splice方法会改变原数组）"></a>splice()  方法 向/从数组中添加/删除项目，然后返回被删除的项目。》》》（splice方法会改变原数组）</h1><ul>
+<li><p>语法</p>
+<h4 id="arrayObject-splice-index-howmany-item1-…-itemX"><a href="#arrayObject-splice-index-howmany-item1-…-itemX" class="headerlink" title="arrayObject.splice(index,howmany,item1,…..,itemX)"></a>arrayObject.splice(index,howmany,item1,…..,itemX)</h4><ol>
+<li>(index)    必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。</li>
+<li>(howmany)必需。要删除的项目数量。如果设置为 0，则不会删除项目。</li>
+<li>(itemX)可选。向数组添加的新项目。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>];</div><div class="line"><span class="keyword">var</span> removed = colors.splice(<span class="number">0</span>,<span class="number">1</span>); <span class="comment">// 删除第一项</span></div><div class="line">alert(colors); <span class="comment">// green,blue</span></div><div class="line">alert(removed); <span class="comment">// red，返回的数组中只包含一项</span></div><div class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">0</span>, <span class="string">"yellow"</span>, <span class="string">"orange"</span>); <span class="comment">// 从位置1 开始插入两项</span></div><div class="line">alert(colors); <span class="comment">// green,yellow,orange,blue</span></div><div class="line">alert(removed); <span class="comment">// 返回的是一个空数组</span></div><div class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="string">"red"</span>, <span class="string">"purple"</span>); <span class="comment">// 插入两项，删除一项</span></div><div class="line">alert(colors); <span class="comment">// green,red,purple,orange,blue</span></div><div class="line">alert(removed); <span class="comment">// yellow，返回的数组中只包含一项</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li>返回被删除项目的新数组，如果有的话</li>
+</ul>
+</li>
+<li><p>说明</p>
+<ul>
+<li>splice() 方法可删除从 index 处开始的零个或多个元素，并且用参数列表中声明的一个或多个值来替换那些被删除的元素。<br>如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组。</li>
+</ul>
+</li>
+</ul>
+<h1 id="indexOf-返回要查找的项在数组中的位置，或者在没找到的情况下返回-1"><a href="#indexOf-返回要查找的项在数组中的位置，或者在没找到的情况下返回-1" class="headerlink" title="indexOf()  返回要查找的项在数组中的位置，或者在没找到的情况下返回-1"></a>indexOf()  返回要查找的项在数组中的位置，或者在没找到的情况下返回-1</h1><ul>
+<li>语法<h4 id="arrayObject-indexOf-searchvalue-fromindex"><a href="#arrayObject-indexOf-searchvalue-fromindex" class="headerlink" title="arrayObject.indexOf(searchvalue,fromindex)"></a>arrayObject.indexOf(searchvalue,fromindex)</h4><ol>
+<li>(searchvalue)    要查找的项</li>
+<li>(fromindex)  （可选的）表示查找起点位置的索引</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/12/JS-String/" rel="next" title="JS String">
+                <i class="fa fa-chevron-left"></i> JS String
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/12/flex-布局/" rel="prev" title="flex 布局">
+                flex 布局 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jeffrey Liu" />
+            
+              <p class="site-author-name" itemprop="name">Jeffrey Liu</p>
+              <p class="site-description motion-element" itemprop="description">专注于前端</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS-Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。"><span class="nav-number">1.</span> <span class="nav-text">JS Array对象定义的方法都不能改变数组的内容，而仅仅会返回数组的一个副本。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concat-方法-用于连接两个或多个数组。"><span class="nav-number">2.</span> <span class="nav-text">concat()  方法 用于连接两个或多个数组。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#arrayObject-concat-arrayX-arrayX-……-arrayX"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">arrayObject.concat(arrayX,arrayX,……,arrayX)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#join-方法-把数组中的所有元素放入一个字符串"><span class="nav-number">3.</span> <span class="nav-text">join()  方法 把数组中的所有元素放入一个字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#arrayObject-join-separator"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">arrayObject.join(separator)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#slice-方法-从已有的数组中返回选定的元素。"><span class="nav-number">4.</span> <span class="nav-text">slice()  方法 从已有的数组中返回选定的元素。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#arrayObject-slice-start-end"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">arrayObject.slice(start,end)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splice-方法-向-从数组中添加-删除项目，然后返回被删除的项目。》》》（splice方法会改变原数组）"><span class="nav-number">5.</span> <span class="nav-text">splice()  方法 向/从数组中添加/删除项目，然后返回被删除的项目。》》》（splice方法会改变原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#arrayObject-splice-index-howmany-item1-…-itemX"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">arrayObject.splice(index,howmany,item1,…..,itemX)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#indexOf-返回要查找的项在数组中的位置，或者在没找到的情况下返回-1"><span class="nav-number">6.</span> <span class="nav-text">indexOf()  返回要查找的项在数组中的位置，或者在没找到的情况下返回-1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#arrayObject-indexOf-searchvalue-fromindex"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">arrayObject.indexOf(searchvalue,fromindex)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeffrey Liu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/11/12/JS-Array/';
+          this.page.identifier = '2017/11/12/JS-Array/';
+          this.page.title = 'JS Array';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
