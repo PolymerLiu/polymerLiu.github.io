@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="专注于前端">
+<meta name="description" content="让元素在你的视野消失 设置display:none(该元素从文档流中删除，对布局无影响) 优点 简单暴力，不需要多余代码   缺点 元素从文档删除，对于seo不利     visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局) 优点 相对display会利于SEO优化   缺点 该属性会继承，假如祖先用了visibility:hidden，那么子元素也是直接显">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开发技巧总结CSS">
 <meta property="og:url" content="http://yoursite.com/2017/11/16/开发技巧总结CSS/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="专注于前端">
+<meta property="og:description" content="让元素在你的视野消失 设置display:none(该元素从文档流中删除，对布局无影响) 优点 简单暴力，不需要多余代码   缺点 元素从文档删除，对于seo不利     visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局) 优点 相对display会利于SEO优化   缺点 该属性会继承，假如祖先用了visibility:hidden，那么子元素也是直接显">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-16T01:35:48.687Z">
+<meta property="og:updated_time" content="2017-11-17T09:23:58.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发技巧总结CSS">
-<meta name="twitter:description" content="专注于前端">
+<meta name="twitter:description" content="让元素在你的视野消失 设置display:none(该元素从文档流中删除，对布局无影响) 优点 简单暴力，不需要多余代码   缺点 元素从文档删除，对于seo不利     visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局) 优点 相对display会利于SEO优化   缺点 该属性会继承，假如祖先用了visibility:hidden，那么子元素也是直接显">
 
 
 
@@ -321,7 +321,100 @@
       
 
       
-        
+        <h3 id="让元素在你的视野消失"><a href="#让元素在你的视野消失" class="headerlink" title="让元素在你的视野消失"></a>让元素在你的视野消失</h3><ul>
+<li>设置display:none(该元素从文档流中删除，对布局无影响)<ul>
+<li>优点<ul>
+<li>简单暴力，不需要多余代码</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>元素从文档删除，对于seo不利</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局)<ul>
+<li>优点<ul>
+<li>相对display会利于SEO优化</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>该属性会继承，假如祖先用了visibility:hidden，那么子元素也是直接显示不见，想要子元素显示让用户看见，还要必须再多写visibility：visible   </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>opacity: 0 (仅仅是看不见而已，该元素还是在那，影响布局)<ul>
+<li>优点<ul>
+<li>简洁</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>IE6~8不兼容<ul>
+<li>兼容写法：filter:alpha(opacity=x)，x为元素的不透明值，从10~100,100为全不透明</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>text-indent: 100%(-999em)<ul>
+<li>优点<ul>
+<li>利于搜索引擎</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>text-indent属性仅适用于块级元素，行内元素比如span对其不感冒</li>
+</ul>
+</li>
+<li>出现横向滚动时可以设置 <ul>
+<li>direction: ltr(默认) =&gt;direction 属性规定文本的书写方向。</li>
+<li>overflow: hidden</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>position: absolute top:-999em or left:-999em(脱标)<ul>
+<li>优点<ul>
+<li>信手拈来，随意摆放   </li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>写的太多</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>font-size:0<ul>
+<li>优点<ul>
+<li>IE8支持，6-7不支持   <ul>
+<li>缺点</li>
+</ul>
+</li>
+<li>仅当元素由内容撑起时才有效，如已经对元素设置宽高，则无效        </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="细说盒子模型-以下统一以-lt-div-gt-文章-lt-div-gt-为例进行叙述-border以内区域-包括border-成为“框”"><a href="#细说盒子模型-以下统一以-lt-div-gt-文章-lt-div-gt-为例进行叙述-border以内区域-包括border-成为“框”" class="headerlink" title="细说盒子模型(以下统一以&lt;div&gt;文章&lt;/div&gt;为例进行叙述)(border以内区域[包括border]成为“框”)"></a>细说盒子模型(以下统一以<code>&lt;div&gt;文章&lt;/div&gt;</code>为例进行叙述)(border以内区域[包括border]成为“框”)</h1><blockquote>
+<p>一个盒子就是其在文档流中所占据的空间 </p>
+<h2 id="W3C-content-padding-border-margin"><a href="#W3C-content-padding-border-margin" class="headerlink" title="W3C(content+padding+border+margin)"></a>W3C(content+padding+border+margin)</h2><ul>
+<li>为div设置宽高后，再去为其设置padding，“框”会被撑大(因为width，height仅设置内容区域)</li>
+<li>margin 设置后，增加的是“框”之间距离，实际上盒子与盒子还是紧紧挨着的，，因为margin也属于盒子的一部分</li>
+<li>继续为其设置display：inline后，<ul>
+<li>其宽高属性失效，“框”的大小即文字所占据的空间。</li>
+<li>padding属性正常设置，但是其并不会将旁边块状元素挤开,并且其还会悬浮于周边块元素之上</li>
+<li>margin属性只有左右有效，上下margin失效</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="IE盒子模型-content-padding-border-margin"><a href="#IE盒子模型-content-padding-border-margin" class="headerlink" title="IE盒子模型(content+padding+border+margin)"></a>IE盒子模型(content+padding+border+margin)</h2><ul>
+<li>区别就是，div的宽高就是“框”的宽高，而不是单纯的内容宽高（其包含了border+padding）</li>
+<li>为div设置宽高后，再去为其设置padding，“框”不会被撑大，但是会减小content的大小(因为width，height仅设置内容区域)</li>
+</ul>
+
       
     </div>
     
@@ -421,8 +514,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -488,6 +590,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#让元素在你的视野消失"><span class="nav-number">1.</span> <span class="nav-text">让元素在你的视野消失</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#细说盒子模型-以下统一以-lt-div-gt-文章-lt-div-gt-为例进行叙述-border以内区域-包括border-成为“框”"><span class="nav-number"></span> <span class="nav-text">细说盒子模型(以下统一以<div>文章</div>为例进行叙述)(border以内区域[包括border]成为“框”)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#W3C-content-padding-border-margin"><span class="nav-number"></span> <span class="nav-text">W3C(content+padding+border+margin)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IE盒子模型-content-padding-border-margin"><span class="nav-number"></span> <span class="nav-text">IE盒子模型(content+padding+border+margin)</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
