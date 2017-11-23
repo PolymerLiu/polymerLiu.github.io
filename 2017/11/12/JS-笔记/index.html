@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包 所有输出结果都为3版本 var data = [];for(var i = 0, i &amp;lt; 3, i++){">
+<meta name="description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 笔记">
 <meta property="og:url" content="http://yoursite.com/2017/11/12/JS-笔记/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包 所有输出结果都为3版本 var data = [];for(var i = 0, i &amp;lt; 3, i++){">
+<meta property="og:description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-13T01:10:54.096Z">
+<meta property="og:updated_time" content="2017-11-23T11:46:36.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 笔记">
-<meta name="twitter:description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包 所有输出结果都为3版本 var data = [];for(var i = 0, i &amp;lt; 3, i++){">
+<meta name="twitter:description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包">
 
 
 
@@ -344,8 +344,7 @@
 
       
         <p>javascript 代码运行分俩个阶段</p>
-<p>预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前<br>执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)<br>for 循环之闭包</p>
-<p>所有输出结果都为3版本</p>
+<p>预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前<br>执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)<br>for 循环之闭包<br><a id="more"></a><br>所有输出结果都为3版本</p>
 <p>var data = [];<br>for(var i = 0, i &lt; 3, i++){<br>    data[i] = function(){<br>        console.log(i);     //  这里只是声明了一个 函数，并未调用，无法使用for里边的i。。。。到for外边调用时，此时i已经变为3<br>    }<br>}<br>// for 循环完毕之后，i的值变为3（为全局变量）<br>data<a href="">0</a>;   //  3     data[0]=function(){console.log(i)  此i为for循环之外的i}<br>data<a href="">1</a>;   //  3<br>data<a href="">2</a>;   //  3<br>输出结果依次为0,1,2版本</p>
 <p>var data = [];<br>for(var i = 0, i&lt;3, i++){<br>    data[i] = (function(k) {</p>
 <pre><code>    return function () {
@@ -588,6 +587,20 @@ xiaoming.showAge();     //调用xiaoming的showAge()方法
           
 
           <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/PolymerLiu" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="17771770679@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-网易"></i>E-Mail</a>
+                </span>
+              
             
           </div>
 

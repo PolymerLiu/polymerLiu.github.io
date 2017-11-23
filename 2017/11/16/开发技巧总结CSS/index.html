@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="让元素在你的视野消失 设置display:none(该元素从文档流中删除，对布局无影响) 优点 简单暴力，不需要多余代码   缺点 元素从文档删除，对于seo不利     visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局) 优点 相对display会利于SEO优化   缺点 该属性会继承，假如祖先用了visibility:hidden，那么子元素也是直接显">
+<meta name="description" content="让元素在你的视野消失设置display:none(该元素从文档流中删除，对布局无影响)  优点* 简单暴力，不需要多余代码  缺点* 元素从文档删除，对于seo不利">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开发技巧总结CSS">
 <meta property="og:url" content="http://yoursite.com/2017/11/16/开发技巧总结CSS/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="让元素在你的视野消失 设置display:none(该元素从文档流中删除，对布局无影响) 优点 简单暴力，不需要多余代码   缺点 元素从文档删除，对于seo不利     visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局) 优点 相对display会利于SEO优化   缺点 该属性会继承，假如祖先用了visibility:hidden，那么子元素也是直接显">
+<meta property="og:description" content="让元素在你的视野消失设置display:none(该元素从文档流中删除，对布局无影响)  优点* 简单暴力，不需要多余代码  缺点* 元素从文档删除，对于seo不利">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-17T09:23:58.684Z">
+<meta property="og:updated_time" content="2017-11-23T12:03:08.241Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发技巧总结CSS">
-<meta name="twitter:description" content="让元素在你的视野消失 设置display:none(该元素从文档流中删除，对布局无影响) 优点 简单暴力，不需要多余代码   缺点 元素从文档删除，对于seo不利     visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局) 优点 相对display会利于SEO优化   缺点 该属性会继承，假如祖先用了visibility:hidden，那么子元素也是直接显">
+<meta name="twitter:description" content="让元素在你的视野消失设置display:none(该元素从文档流中删除，对布局无影响)  优点* 简单暴力，不需要多余代码  缺点* 元素从文档删除，对于seo不利">
 
 
 
@@ -321,19 +321,16 @@
       
 
       
-        <h3 id="让元素在你的视野消失"><a href="#让元素在你的视野消失" class="headerlink" title="让元素在你的视野消失"></a>让元素在你的视野消失</h3><ul>
-<li>设置display:none(该元素从文档流中删除，对布局无影响)<ul>
-<li>优点<ul>
-<li>简单暴力，不需要多余代码</li>
+        <h1 id="让元素在你的视野消失"><a href="#让元素在你的视野消失" class="headerlink" title="让元素在你的视野消失"></a>让元素在你的视野消失</h1><h3 id="设置display-none-该元素从文档流中删除，对布局无影响"><a href="#设置display-none-该元素从文档流中删除，对布局无影响" class="headerlink" title="设置display:none(该元素从文档流中删除，对布局无影响)"></a>设置display:none(该元素从文档流中删除，对布局无影响)</h3><blockquote>
+<ul>
+<li>优点<pre><code>* 简单暴力，不需要多余代码
+</code></pre></li>
+<li>缺点<pre><code>* 元素从文档删除，对于seo不利
+</code></pre></li>
 </ul>
-</li>
-<li>缺点<ul>
-<li>元素从文档删除，对于seo不利</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局)<ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="visibility-hidden-元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局"><a href="#visibility-hidden-元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局" class="headerlink" title="visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局)"></a>visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局)</h3><ul>
 <li>优点<ul>
 <li>相对display会利于SEO优化</li>
 </ul>
@@ -343,8 +340,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>opacity: 0 (仅仅是看不见而已，该元素还是在那，影响布局)<ul>
+<h3 id="opacity-0-仅仅是看不见而已，该元素还是在那，影响布局"><a href="#opacity-0-仅仅是看不见而已，该元素还是在那，影响布局" class="headerlink" title="opacity: 0 (仅仅是看不见而已，该元素还是在那，影响布局)"></a>opacity: 0 (仅仅是看不见而已，该元素还是在那，影响布局)</h3><ul>
 <li>优点<ul>
 <li>简洁</li>
 </ul>
@@ -357,8 +353,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>text-indent: 100%(-999em)<ul>
+<h3 id="text-indent-100-999em"><a href="#text-indent-100-999em" class="headerlink" title="text-indent: 100%(-999em)"></a>text-indent: 100%(-999em)</h3><ul>
 <li>优点<ul>
 <li>利于搜索引擎</li>
 </ul>
@@ -373,8 +368,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>position: absolute top:-999em or left:-999em(脱标)<ul>
+<h3 id="position-absolute-top-999em-or-left-999em-脱标"><a href="#position-absolute-top-999em-or-left-999em-脱标" class="headerlink" title="position: absolute top:-999em or left:-999em(脱标)"></a>position: absolute top:-999em or left:-999em(脱标)</h3><ul>
 <li>优点<ul>
 <li>信手拈来，随意摆放   </li>
 </ul>
@@ -384,22 +378,21 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>font-size:0<ul>
+<h3 id="font-size-0"><a href="#font-size-0" class="headerlink" title="font-size:0"></a>font-size:0</h3><ul>
 <li>优点<ul>
-<li>IE8支持，6-7不支持   <ul>
-<li>缺点</li>
+<li>IE8支持，6-7不支持   </li>
 </ul>
 </li>
+<li>缺点<ul>
 <li>仅当元素由内容撑起时才有效，如已经对元素设置宽高，则无效        </li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h1 id="细说盒子模型-以下统一以-lt-div-gt-文章-lt-div-gt-为例进行叙述-border以内区域-包括border-成为“框”"><a href="#细说盒子模型-以下统一以-lt-div-gt-文章-lt-div-gt-为例进行叙述-border以内区域-包括border-成为“框”" class="headerlink" title="细说盒子模型(以下统一以&lt;div&gt;文章&lt;/div&gt;为例进行叙述)(border以内区域[包括border]成为“框”)"></a>细说盒子模型(以下统一以<code>&lt;div&gt;文章&lt;/div&gt;</code>为例进行叙述)(border以内区域[包括border]成为“框”)</h1><blockquote>
+<h1 id="细说盒子模型"><a href="#细说盒子模型" class="headerlink" title="细说盒子模型"></a>细说盒子模型</h1><blockquote>
+<p>(以下统一以<code>&lt;div&gt;文章&lt;/div&gt;</code>为例进行叙述)(border以内区域<code>包括border</code>成为“框”)</p>
 <p>一个盒子就是其在文档流中所占据的空间 </p>
-<h2 id="W3C-content-padding-border-margin"><a href="#W3C-content-padding-border-margin" class="headerlink" title="W3C(content+padding+border+margin)"></a>W3C(content+padding+border+margin)</h2><ul>
+</blockquote>
+<h3 id="W3C-content-padding-border-margin"><a href="#W3C-content-padding-border-margin" class="headerlink" title="W3C(content+padding+border+margin)"></a>W3C(content+padding+border+margin)</h3><ul>
 <li>为div设置宽高后，再去为其设置padding，“框”会被撑大(因为width，height仅设置内容区域)</li>
 <li>margin 设置后，增加的是“框”之间距离，实际上盒子与盒子还是紧紧挨着的，，因为margin也属于盒子的一部分</li>
 <li>继续为其设置display：inline后，<ul>
@@ -409,8 +402,7 @@
 </ul>
 </li>
 </ul>
-</blockquote>
-<h2 id="IE盒子模型-content-padding-border-margin"><a href="#IE盒子模型-content-padding-border-margin" class="headerlink" title="IE盒子模型(content+padding+border+margin)"></a>IE盒子模型(content+padding+border+margin)</h2><ul>
+<h3 id="IE盒子模型-content-padding-border-margin"><a href="#IE盒子模型-content-padding-border-margin" class="headerlink" title="IE盒子模型(content+padding+border+margin)"></a>IE盒子模型(content+padding+border+margin)</h3><ul>
 <li>区别就是，div的宽高就是“框”的宽高，而不是单纯的内容宽高（其包含了border+padding）</li>
 <li>为div设置宽高后，再去为其设置padding，“框”不会被撑大，但是会减小content的大小(因为width，height仅设置内容区域)</li>
 </ul>
@@ -577,6 +569,20 @@
 
           <div class="links-of-author motion-element">
             
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/PolymerLiu" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="17771770679@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-网易"></i>E-Mail</a>
+                </span>
+              
+            
           </div>
 
           
@@ -600,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#让元素在你的视野消失"><span class="nav-number">1.</span> <span class="nav-text">让元素在你的视野消失</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#细说盒子模型-以下统一以-lt-div-gt-文章-lt-div-gt-为例进行叙述-border以内区域-包括border-成为“框”"><span class="nav-number"></span> <span class="nav-text">细说盒子模型(以下统一以<div>文章</div>为例进行叙述)(border以内区域[包括border]成为“框”)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#W3C-content-padding-border-margin"><span class="nav-number"></span> <span class="nav-text">W3C(content+padding+border+margin)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IE盒子模型-content-padding-border-margin"><span class="nav-number"></span> <span class="nav-text">IE盒子模型(content+padding+border+margin)</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#让元素在你的视野消失"><span class="nav-number">1.</span> <span class="nav-text">让元素在你的视野消失</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置display-none-该元素从文档流中删除，对布局无影响"><span class="nav-number">1.0.1.</span> <span class="nav-text">设置display:none(该元素从文档流中删除，对布局无影响)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visibility-hidden-元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局"><span class="nav-number">1.0.2.</span> <span class="nav-text">visibility: hidden(元素隐藏了肉眼看不见，但元素依然存在那里，会影响布局)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#opacity-0-仅仅是看不见而已，该元素还是在那，影响布局"><span class="nav-number">1.0.3.</span> <span class="nav-text">opacity: 0 (仅仅是看不见而已，该元素还是在那，影响布局)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-indent-100-999em"><span class="nav-number">1.0.4.</span> <span class="nav-text">text-indent: 100%(-999em)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-absolute-top-999em-or-left-999em-脱标"><span class="nav-number">1.0.5.</span> <span class="nav-text">position: absolute top:-999em or left:-999em(脱标)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#font-size-0"><span class="nav-number">1.0.6.</span> <span class="nav-text">font-size:0</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#细说盒子模型"><span class="nav-number">2.</span> <span class="nav-text">细说盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#W3C-content-padding-border-margin"><span class="nav-number">2.0.1.</span> <span class="nav-text">W3C(content+padding+border+margin)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE盒子模型-content-padding-border-margin"><span class="nav-number">2.0.2.</span> <span class="nav-text">IE盒子模型(content+padding+border+margin)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

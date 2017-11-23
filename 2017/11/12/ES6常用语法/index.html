@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="ES6常见语法letES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。123456789let name = &apos;zach&apos;while (true) &amp;#123;    let name = &apos;obama&apos;    cons">
+<meta name="description" content="ES6常见语法letES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6常用语法">
 <meta property="og:url" content="http://yoursite.com/2017/11/12/ES6常用语法/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="ES6常见语法letES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。123456789let name = &apos;zach&apos;while (true) &amp;#123;    let name = &apos;obama&apos;    cons">
+<meta property="og:description" content="ES6常见语法letES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-14T09:10:44.460Z">
+<meta property="og:updated_time" content="2017-11-23T11:46:36.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6常用语法">
-<meta name="twitter:description" content="ES6常见语法letES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。123456789let name = &apos;zach&apos;while (true) &amp;#123;    let name = &apos;obama&apos;    cons">
+<meta name="twitter:description" content="ES6常见语法letES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。">
 
 
 
@@ -343,7 +343,8 @@
       
 
       
-        <h1 id="ES6常见语法"><a href="#ES6常见语法" class="headerlink" title="ES6常见语法"></a>ES6常见语法</h1><h1 id="let"><a href="#let" class="headerlink" title="let"></a>let</h1><h4 id="ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。"><a href="#ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。" class="headerlink" title="ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。"></a>ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。</h4><h4 id="第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。"><a href="#第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。" class="headerlink" title="第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。"></a>第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="string">'zach'</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">let</span> name = <span class="string">'obama'</span></div><div class="line">    <span class="built_in">console</span>.log(name)  <span class="comment">//obama</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(name)  <span class="comment">//zach</span></div></pre></td></tr></table></figure>
+        <h1 id="ES6常见语法"><a href="#ES6常见语法" class="headerlink" title="ES6常见语法"></a>ES6常见语法</h1><h1 id="let"><a href="#let" class="headerlink" title="let"></a>let</h1><h4 id="ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。"><a href="#ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。" class="headerlink" title="ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。"></a>ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。</h4><h4 id="第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。"><a href="#第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。" class="headerlink" title="第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。"></a>第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。</h4><a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="string">'zach'</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">let</span> name = <span class="string">'obama'</span></div><div class="line">    <span class="built_in">console</span>.log(name)  <span class="comment">//obama</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(name)  <span class="comment">//zach</span></div></pre></td></tr></table></figure>
 <h4 id="第二个var带来的不合理场景就是用来计数的循环变量泄露为全局变量"><a href="#第二个var带来的不合理场景就是用来计数的循环变量泄露为全局变量" class="headerlink" title="第二个var带来的不合理场景就是用来计数的循环变量泄露为全局变量"></a>第二个var带来的不合理场景就是用来计数的循环变量泄露为全局变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;    </div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">a[<span class="number">6</span>](); <span class="comment">// 10</span></div></pre></td></tr></table></figure>
 <ul>
 <li>上面代码中，变量i是var声明的，在全局范围内都有效。所以每一次循环，新的i值都会覆盖旧值，导致最后输出的是最后一轮的i的值。而使用let则不会出现这个问题。</li>
@@ -524,6 +525,20 @@
           
 
           <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/PolymerLiu" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="17771770679@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-网易"></i>E-Mail</a>
+                </span>
+              
             
           </div>
 
