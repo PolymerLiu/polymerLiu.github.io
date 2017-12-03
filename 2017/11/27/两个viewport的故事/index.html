@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="J.L&#39;s BLOG">
 <meta property="og:description" content="概念：设备像素和CSS像素你需要明白的第一个概念是CSS像素，以及它和设备像素的区别。 设备像素是我们直觉上觉得「靠谱」的像素。这些像素为你所使用的各种设备都提供了正规的分辨率，并且其值可以（通常情况下）从screen.width/height属性中读出。 如果你给一个元素设置了width: 128px的属性，并且你的显示器是1024px宽，当你最大化你的浏览器屏幕，这个元素将会在你的显示器上重复">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-27T14:13:13.567Z">
+<meta property="og:updated_time" content="2017-11-28T16:28:34.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="两个viewport的故事">
 <meta name="twitter:description" content="概念：设备像素和CSS像素你需要明白的第一个概念是CSS像素，以及它和设备像素的区别。 设备像素是我们直觉上觉得「靠谱」的像素。这些像素为你所使用的各种设备都提供了正规的分辨率，并且其值可以（通常情况下）从screen.width/height属性中读出。 如果你给一个元素设置了width: 128px的属性，并且你的显示器是1024px宽，当你最大化你的浏览器屏幕，这个元素将会在你的显示器上重复">
@@ -349,6 +349,7 @@
 <p>如果用户进行缩放，那么计算方式将会发生变化。如果用户放大到200%，那么你的那个拥有width: 128px属性的元素在1024px宽的显示器上只会重复显示4次。</p>
 <p>现代浏览器中实现缩放的方式无怪乎都是「拉伸」像素。所以，元素的宽度并没有从128个像素被修改为256个像素；相反是<strong>实际像素</strong>被放大了两倍。形式上，元素仍然是128个CSS像素宽，即使它占据了256个设备像素的空间。</p>
 <p>换句话说，放大到200%使一个CSS像素变成为一个设备像素的四倍。（宽度2倍，高度2倍，总共4倍）</p>
+<a id="more"></a>
 <h3 id="100-缩放"><a href="#100-缩放" class="headerlink" title="100%缩放"></a>100%缩放</h3><p>在缩放比例100%的情况下一个CSS像素完全等于一个设备像素。</p>
 <h3 id="屏幕尺寸-screen-width-height"><a href="#屏幕尺寸-screen-width-height" class="headerlink" title="屏幕尺寸  screen.width/height"></a>屏幕尺寸  screen.width/height</h3><blockquote>
 <p>它们的尺寸是以设备像素来进行度量的，因为它们永远不会变：它们是显示器的属性，而不是浏览器的</p>

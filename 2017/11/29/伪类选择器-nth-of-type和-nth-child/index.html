@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="E:nth-of-type(n)匹配的是同类型中的第n个同级兄弟元素E E:nth-child(n)匹配的是父元素中的第n个子元素E 12345&amp;lt;div&amp;gt;    &amp;lt;p&amp;gt;1&amp;lt;/p&amp;gt;    &amp;lt;p&amp;gt;2&amp;lt;/p&amp;gt;    &amp;lt;p&amp;gt;3&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; 12p:nth-child(2) /*匹配到第二个p*/p:nt">
+<meta name="description" content="E:nth-of-type(n)匹配的是同类型中的第n个同级兄弟元素E E:nth-child(n)匹配的是父元素中的第n个子元素E">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="伪类选择器:nth-of-type和:nth-child">
 <meta property="og:url" content="http://yoursite.com/2017/11/29/伪类选择器-nth-of-type和-nth-child/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="E:nth-of-type(n)匹配的是同类型中的第n个同级兄弟元素E E:nth-child(n)匹配的是父元素中的第n个子元素E 12345&amp;lt;div&amp;gt;    &amp;lt;p&amp;gt;1&amp;lt;/p&amp;gt;    &amp;lt;p&amp;gt;2&amp;lt;/p&amp;gt;    &amp;lt;p&amp;gt;3&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; 12p:nth-child(2) /*匹配到第二个p*/p:nt">
+<meta property="og:description" content="E:nth-of-type(n)匹配的是同类型中的第n个同级兄弟元素E E:nth-child(n)匹配的是父元素中的第n个子元素E">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-28T16:23:16.316Z">
+<meta property="og:updated_time" content="2017-11-28T16:28:34.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="伪类选择器:nth-of-type和:nth-child">
-<meta name="twitter:description" content="E:nth-of-type(n)匹配的是同类型中的第n个同级兄弟元素E E:nth-child(n)匹配的是父元素中的第n个子元素E 12345&amp;lt;div&amp;gt;    &amp;lt;p&amp;gt;1&amp;lt;/p&amp;gt;    &amp;lt;p&amp;gt;2&amp;lt;/p&amp;gt;    &amp;lt;p&amp;gt;3&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; 12p:nth-child(2) /*匹配到第二个p*/p:nt">
+<meta name="twitter:description" content="E:nth-of-type(n)匹配的是同类型中的第n个同级兄弟元素E E:nth-child(n)匹配的是父元素中的第n个子元素E">
 
 
 
@@ -345,6 +345,7 @@
       
         <p>E:nth-of-type(n)匹配的是同类型中的第n个同级兄弟元素E</p>
 <p>E:nth-child(n)匹配的是父元素中的第n个子元素E</p>
+<a id="more"></a>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-child(2)</span> <span class="comment">/*匹配到第二个p*/</span></div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(2)</span> <span class="comment">/*匹配到第二个p*/</span></div></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>555<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>445<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
