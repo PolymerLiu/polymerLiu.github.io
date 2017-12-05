@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包">
+<meta name="description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)  for 循环之闭包所有输出结果都为3版本">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 笔记">
 <meta property="og:url" content="http://yoursite.com/2017/11/12/JS-笔记/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包">
+<meta property="og:description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)  for 循环之闭包所有输出结果都为3版本">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T11:46:36.413Z">
+<meta property="og:updated_time" content="2017-12-05T04:35:02.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 笔记">
-<meta name="twitter:description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)for 循环之闭包">
+<meta name="twitter:description" content="javascript 代码运行分俩个阶段 预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)  for 循环之闭包所有输出结果都为3版本">
 
 
 
@@ -343,93 +343,20 @@
       
 
       
-        <p>javascript 代码运行分俩个阶段</p>
-<p>预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前<br>执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)<br>for 循环之闭包<br><a id="more"></a><br>所有输出结果都为3版本</p>
-<p>var data = [];<br>for(var i = 0, i &lt; 3, i++){<br>    data[i] = function(){<br>        console.log(i);     //  这里只是声明了一个 函数，并未调用，无法使用for里边的i。。。。到for外边调用时，此时i已经变为3<br>    }<br>}<br>// for 循环完毕之后，i的值变为3（为全局变量）<br>data<a href="">0</a>;   //  3     data[0]=function(){console.log(i)  此i为for循环之外的i}<br>data<a href="">1</a>;   //  3<br>data<a href="">2</a>;   //  3<br>输出结果依次为0,1,2版本</p>
-<p>var data = [];<br>for(var i = 0, i&lt;3, i++){<br>    data[i] = (function(k) {</p>
-<pre><code>    return function () {
-        console.log(k);
-    }
-
-
-
-}) (i);  // 此  i  为立即执行函数的的实际参数，，并把其值赋值给形式参数  k
-</code></pre><p>}<br>// for 循环完毕之后，i的值变为3（为全局变量）<br>data<a href="">0</a>;   //  0<br>data<a href="">1</a>;   //  1<br>data<a href="">2</a>;   //  2<br>初识闭包</p>
-<p>(function() {<br>    /<em>*闭包详解</em>/<br>    function fun() {<br>        var num = 10; // 让fun以外的函数   使用num(变量)的值      这样就可以创建闭包<br>        console.log(num);<br>    }</p>
-<pre><code>function outFun() { //本函数执行结果是返回inFun函数的函数体，即function inFun()  {console.log(num);}
-    var num = 10;
-
-    function inFun() {
-        console.log(num);
-    }
-    return inFun; //(此句为闭包核心)  该行代码作为  本函数的执行结果    因为函数不调用是不会执行的
-}
-
-//赋值运算符(=)  是从右往左计算的
-var demo = outFun(); //  本段代码就是  把调用outFun函数的结果(返回inFun函数的函数体)  赋值给demo
-//    outFun()    返回的是   function inFun()  {console.log(num);}
-//  等同于    var demo = function inFun() {console.log(num);}
-
-var demo = function inFun() {
-        console.log(num);
-    } //  把一个函数赋值给一个变量，那么   该变量就成为一个函数
-
-demo(); //  接下来就调用这个函数
-
-
-/**
- *如上 demo这个函数   使用outFun函数内的变量   这一过程就形成了一个闭包
- */
-
-
-
-//其实每一个 函数都是  一个小闭包   (当函数引用全局变量的时候)
-var key = 10;
-
-function one() {
-    console.log(key);
-}
-
-
-
-/**闭包实例*/
-function outerFun() {
-    var a = 0; ///每次调用 outerFun函数    a都会被清零;
-    function innerFun() {
-        a++;
-        alert(a);
-    }
-    return innerFun;
-}
-
-var obj = outerFun();
-obj();   obj(); //   1   2
-
-var obj2 = outerFun();
-obj2();  obj2(); //  1   2
-
-/**闭包原理 ：
- * 如果想要使用某个函数内的变量，直接是无法使用的(因为有作用域的存在)。
- * 但是我们可以曲线救国，，通过在该函数内内置一个函数，，然后再把内置函数return出来，
- * 然后在外面调用这个内置函数
- */
-</code></pre><p>})();<br>闭包优点：不会产生全局变量，实现属性私有化</p>
+        <h2 id="javascript-代码运行分俩个阶段"><a href="#javascript-代码运行分俩个阶段" class="headerlink" title="javascript 代码运行分俩个阶段"></a>javascript 代码运行分俩个阶段</h2><blockquote>
+<p>预解析 —把所有函数定义(function () {})提前,所有的变量声明提前，变量的赋值不提前<br>执行 — 从上到下执行 (setTimeout,setInterval, ajax中的回掉函数，事件中的函数需要触发执行)</p>
+</blockquote>
+<h2 id="for-循环之闭包"><a href="#for-循环之闭包" class="headerlink" title="for 循环之闭包"></a>for 循环之闭包</h2><h3 id="所有输出结果都为3版本"><a href="#所有输出结果都为3版本" class="headerlink" title="所有输出结果都为3版本"></a>所有输出结果都为3版本</h3><a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = []; </div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; <span class="number">3</span>; i++)&#123;</div><div class="line">    data[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(i);     <span class="comment">//  这里只是声明了一个 函数，并未调用，无法使用for里边的i。。。。到for外边调用时，此时i已经变为3</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// for 循环完毕之后，i的值变为3（为全局变量）</span></div><div class="line">data[<span class="number">0</span>]();   <span class="comment">//  3     data[0]=function()&#123;console.log(i)  此i为for循环之外的i&#125;</span></div><div class="line">data[<span class="number">1</span>]();   <span class="comment">//  3</span></div><div class="line">data[<span class="number">2</span>]();   <span class="comment">//  3</span></div></pre></td></tr></table></figure>
+<h3 id="输出结果依次为0-1-2版本"><a href="#输出结果依次为0-1-2版本" class="headerlink" title="输出结果依次为0,1,2版本"></a>输出结果依次为0,1,2版本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = [];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;<span class="number">3</span>; i++)&#123;</div><div class="line">    data[i] = (<span class="function"><span class="keyword">function</span>(<span class="params">k</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(k);</div><div class="line">        &#125;</div><div class="line">    &#125;) (i);  <span class="comment">// 此  i  为立即执行函数的的实际参数，，并把其值赋值给形式参数  k</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// for 循环完毕之后，i的值变为3（为全局变量）</span></div><div class="line">data[<span class="number">0</span>]();   <span class="comment">//  0</span></div><div class="line">data[<span class="number">1</span>]();   <span class="comment">//  1</span></div><div class="line">data[<span class="number">2</span>]();   <span class="comment">//  2</span></div></pre></td></tr></table></figure>
+<h3 id="初识闭包"><a href="#初识闭包" class="headerlink" title="初识闭包"></a>初识闭包</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">/**闭包详解*/</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> num = <span class="number">10</span>; <span class="comment">// 让fun以外的函数   使用num(变量)的值      这样就可以创建闭包</span></div><div class="line">        <span class="built_in">console</span>.log(num);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">outFun</span>(<span class="params"></span>) </span>&#123; <span class="comment">//本函数执行结果是返回inFun函数的函数体，即function inFun()  &#123;console.log(num);&#125;</span></div><div class="line">        <span class="keyword">var</span> num = <span class="number">10</span>;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">inFun</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(num);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> inFun; <span class="comment">//(此句为闭包核心)  该行代码作为  本函数的执行结果    因为函数不调用是不会执行的</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//赋值运算符(=)  是从右往左计算的</span></div><div class="line">    <span class="keyword">var</span> demo = outFun(); <span class="comment">//  本段代码就是  把调用outFun函数的结果(返回inFun函数的函数体)  赋值给demo</span></div><div class="line">    <span class="comment">//    outFun()    返回的是   function inFun()  &#123;console.log(num);&#125;</span></div><div class="line">    <span class="comment">//  等同于    var demo = function inFun() &#123;console.log(num);&#125;</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> demo = <span class="function"><span class="keyword">function</span> <span class="title">inFun</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(num);</div><div class="line">        &#125; <span class="comment">//  把一个函数赋值给一个变量，那么   该变量就成为一个函数</span></div><div class="line"></div><div class="line">    demo(); <span class="comment">//  接下来就调用这个函数</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     *如上 demo这个函数   使用outFun函数内的变量   这一过程就形成了一个闭包</span></div><div class="line"><span class="comment">     */</span></div><div class="line"></div><div class="line">    <span class="comment">//其实每一个 函数都是  一个小闭包   (当函数引用全局变量的时候)</span></div><div class="line">    <span class="keyword">var</span> key = <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">one</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(key);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**闭包实例*/</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">outerFun</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> a = <span class="number">0</span>; <span class="comment">///每次调用 outerFun函数    a都会被清零;</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">innerFun</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            a++;</div><div class="line">            alert(a);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> innerFun;<span class="comment">//此处的innerFun为全局变量，永远保留在内存中，除非手动清理</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> obj = outerFun();</div><div class="line">    obj();   obj(); <span class="comment">//   1   2</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> obj2 = outerFun();</div><div class="line">    obj2();  obj2(); <span class="comment">//  1   2</span></div><div class="line"></div><div class="line">    <span class="comment">/**闭包原理 ：</span></div><div class="line"><span class="comment">     * 如果想要使用某个函数内的变量，直接是无法使用的(因为有作用域的存在)。</span></div><div class="line"><span class="comment">     * 但是我们可以曲线救国，，通过在该函数内内置一个函数，，然后再把内置函数return出来，</span></div><div class="line"><span class="comment">     * 然后在外面调用这个内置函数</span></div><div class="line"><span class="comment">     */</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<blockquote>
+<p>闭包优点：不会产生全局变量，实现属性私有化</p>
 <p>闭包缺点：闭包中的数据会常驻内存，在不用的时候要删掉否则会导致内存溢出</p>
-<p>对象<br>基本数据类型</p>
-<p>number string boolean null undefined (object 非基本数据类型)<br>基本数据类型不能自定义属性和方法，，而对象可以<br>声明对象</p>
-<p>var obi = new Object();<br>var obj = {}; 字面量式; 推荐<br>自定义对象的属性、方法</p>
-<p>var obj = {};</p>
-<p>obj.age = 55; //自定义属性</p>
-<p>obj.age; //调用属性</p>
-<p>obj.showAge = function () {alert(55)}; //自定义方法</p>
-<p>obj.showAge(); //调用方法</p>
-<p>封装对象</p>
-<p>(function (){<br>    function person(name, age) {<br>        var obj={};<br>        obj.name=name;<br>        obj.age=age;<br>        obj.showName= function () {<br>            console.log(“”+name);<br>        }<br>        obj.showAge= function () {<br>            console.log(“”+age);<br>        }<br>        return obj;   // 最后一定要把这个对象返回<br>    }</p>
-<pre><code>var xiaoming = person(&quot;小明&quot;,12);  //利用person函数来创建一个小明对象
-console.log(xiaoming.name);   //调用xiaoming的name属性
-console.log(xiaoming.age);
-xiaoming.showAge();     //调用xiaoming的showAge()方法
-</code></pre><p>}) ();<br>this new</p>
+</blockquote>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>number string boolean null undefined (object 非基本数据类型)<br>基本数据类型不能自定义属性和方法，，而对象可以</p>
+<h2 id="声明对象"><a href="#声明对象" class="headerlink" title="声明对象"></a>声明对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obi = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line"><span class="keyword">var</span> obj = &#123;&#125;; <span class="comment">//字面量式; 推荐</span></div><div class="line"></div><div class="line"><span class="comment">//自定义对象的属性、方法</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line"></div><div class="line">obj.age = <span class="number">55</span>; <span class="comment">//自定义属性</span></div><div class="line"></div><div class="line">obj.age; <span class="comment">//调用属性</span></div><div class="line"></div><div class="line">obj.showAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;alert(<span class="number">55</span>)&#125;; <span class="comment">//自定义方法</span></div><div class="line"></div><div class="line">obj.showAge(); <span class="comment">//调用方法</span></div></pre></td></tr></table></figure>
+<h2 id="封装对象"><a href="#封装对象" class="headerlink" title="封装对象"></a>封装对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> obj=&#123;&#125;;</div><div class="line">        obj.name=name;</div><div class="line">        obj.age=age;</div><div class="line">        obj.showName= <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">""</span>+name);</div><div class="line">        &#125;</div><div class="line">        obj.showAge= <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">""</span>+age);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> obj;   <span class="comment">// 最后一定要把这个对象返回</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> xiaoming = person(<span class="string">"小明"</span>,<span class="number">12</span>);  <span class="comment">//利用person函数来创建一个小明对象</span></div><div class="line">    <span class="built_in">console</span>.log(xiaoming.name);   <span class="comment">//调用xiaoming的name属性</span></div><div class="line">    <span class="built_in">console</span>.log(xiaoming.age);</div><div class="line">    xiaoming.showAge();     <span class="comment">//调用xiaoming的showAge()方法</span></div><div class="line">&#125;) ();</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -534,8 +461,17 @@ xiaoming.showAge();     //调用xiaoming的showAge()方法
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -615,6 +551,22 @@ xiaoming.showAge();     //调用xiaoming的showAge()方法
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-代码运行分俩个阶段"><span class="nav-number">1.</span> <span class="nav-text">javascript 代码运行分俩个阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-循环之闭包"><span class="nav-number">2.</span> <span class="nav-text">for 循环之闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#所有输出结果都为3版本"><span class="nav-number">2.1.</span> <span class="nav-text">所有输出结果都为3版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出结果依次为0-1-2版本"><span class="nav-number">2.2.</span> <span class="nav-text">输出结果依次为0,1,2版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初识闭包"><span class="nav-number">2.3.</span> <span class="nav-text">初识闭包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象"><span class="nav-number"></span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明对象"><span class="nav-number">2.</span> <span class="nav-text">声明对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装对象"><span class="nav-number">3.</span> <span class="nav-text">封装对象</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
