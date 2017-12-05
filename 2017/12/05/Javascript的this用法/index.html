@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="for 用法：for(var i = 0; i &amp;lt; arr.length; i++)  用来循环遍历数组中的元素 for in 用法：for(var property in obj)  用来枚举对象的属性  每次循环时都会将obj对象中存在的一个属性赋值给property，该循环会一直持续到对象中所有属性都被枚举一边为止 与for 语句类似，这里控制语句中的var也不是必须的，但为了保证使用">
+<meta name="description" content="this总是指向调用函数的那个对象纯粹的函数调用 this指向window123456var x = 1;function test()&amp;#123;　this.x = 0;&amp;#125;test();  // 相当于window.test()alert(x); //0  作为对象方法的调用 this 指向这个上级对象1234567function test()&amp;#123;  alert(this.x">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="for语句">
-<meta property="og:url" content="http://yoursite.com/2017/12/03/for语句/index.html">
+<meta property="og:title" content="Javascript的this用法">
+<meta property="og:url" content="http://yoursite.com/2017/12/05/Javascript的this用法/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="for 用法：for(var i = 0; i &amp;lt; arr.length; i++)  用来循环遍历数组中的元素 for in 用法：for(var property in obj)  用来枚举对象的属性  每次循环时都会将obj对象中存在的一个属性赋值给property，该循环会一直持续到对象中所有属性都被枚举一边为止 与for 语句类似，这里控制语句中的var也不是必须的，但为了保证使用">
+<meta property="og:description" content="this总是指向调用函数的那个对象纯粹的函数调用 this指向window123456var x = 1;function test()&amp;#123;　this.x = 0;&amp;#125;test();  // 相当于window.test()alert(x); //0  作为对象方法的调用 this 指向这个上级对象1234567function test()&amp;#123;  alert(this.x">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-03T07:24:44.118Z">
+<meta property="og:updated_time" content="2017-12-05T08:36:14.511Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="for语句">
-<meta name="twitter:description" content="for 用法：for(var i = 0; i &amp;lt; arr.length; i++)  用来循环遍历数组中的元素 for in 用法：for(var property in obj)  用来枚举对象的属性  每次循环时都会将obj对象中存在的一个属性赋值给property，该循环会一直持续到对象中所有属性都被枚举一边为止 与for 语句类似，这里控制语句中的var也不是必须的，但为了保证使用">
+<meta name="twitter:title" content="Javascript的this用法">
+<meta name="twitter:description" content="this总是指向调用函数的那个对象纯粹的函数调用 this指向window123456var x = 1;function test()&amp;#123;　this.x = 0;&amp;#125;test();  // 相当于window.test()alert(x); //0  作为对象方法的调用 this 指向这个上级对象1234567function test()&amp;#123;  alert(this.x">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/03/for语句/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/05/Javascript的this用法/"/>
 
 
 
 
 
-  <title>for语句 | J.L's BLOG</title>
+  <title>Javascript的this用法 | J.L's BLOG</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/03/for语句/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/Javascript的this用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeffrey Liu">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">for语句</h1>
+          <h1 class="post-title" itemprop="name headline">Javascript的this用法</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-03T15:17:35+08:00">
-                2017-12-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-05T16:02:38+08:00">
+                2017-12-05
               </time>
             
 
@@ -313,9 +313,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/03/for语句/#comments" itemprop="discussionUrl">
+                <a href="/2017/12/05/Javascript的this用法/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/03/for语句/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/12/05/Javascript的this用法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -343,24 +343,26 @@
       
 
       
-        <h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><blockquote>
-<p>用法：for(var i = 0; i &lt; arr.length; i++)</p>
+        <h1 id="this总是指向调用函数的那个对象"><a href="#this总是指向调用函数的那个对象" class="headerlink" title="this总是指向调用函数的那个对象"></a>this总是指向调用函数的那个对象</h1><h2 id="纯粹的函数调用"><a href="#纯粹的函数调用" class="headerlink" title="纯粹的函数调用"></a>纯粹的函数调用</h2><blockquote>
+<p>this指向window<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　<span class="keyword">this</span>.x = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">test();  <span class="comment">// 相当于window.test()</span></div><div class="line">alert(x); <span class="comment">//0</span></div></pre></td></tr></table></figure></p>
 </blockquote>
-<p>用来循环遍历数组中的元素</p>
-<h2 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h2><blockquote>
-<p>用法：for(var property in obj)</p>
+<h2 id="作为对象方法的调用"><a href="#作为对象方法的调用" class="headerlink" title="作为对象方法的调用"></a>作为对象方法的调用</h2><blockquote>
+<p>this 指向这个上级对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  alert(<span class="keyword">this</span>.x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> o = &#123;&#125;;</div><div class="line">o.x = <span class="number">1</span>;</div><div class="line">o.m = test;</div><div class="line">o.m(); <span class="comment">// 1</span></div></pre></td></tr></table></figure></p>
 </blockquote>
-<p>用来枚举对象的属性</p>
-<ul>
-<li>每次循环时都会将obj对象中存在的一个属性赋值给property，该循环会一直持续到对象中所有属性都被枚举一边为止</li>
-<li>与for 语句类似，这里控制语句中的var也不是必须的，但为了保证使用局部变量，推荐保留var操作符</li>
-<li>for in 也可用来遍历数组，因为数组也属于对象的一种，但其拿到的是数组的下标</li>
-</ul>
-<a id="more"></a>
-<h2 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h2><blockquote>
-<p>for(var property of obj)</p>
+<h2 id="作为构造函数调用"><a href="#作为构造函数调用" class="headerlink" title="作为构造函数调用"></a>作为构造函数调用</h2><blockquote>
+<p>所谓构造函数，就是通过这个函数生成一个新对象（object）。这时，this就指这个新对象。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</div><div class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>])</div><div class="line"><span class="keyword">var</span> m =<span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="number">1</span>,<span class="string">'x'</span>],[<span class="number">2</span>,<span class="string">'y'</span>],[<span class="number">3</span>,<span class="string">'z'</span>]])</div><div class="line"><span class="comment">//遍历数组</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> x <span class="keyword">in</span> a)&#123;</div><div class="line">  alert(x)  <span class="comment">//拿到的是下标0，1，2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> x <span class="keyword">of</span> a)&#123;</div><div class="line">  alert(x)  <span class="comment">//拿到的是值a,b,c</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//遍历Set集合</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> x <span class="keyword">in</span> s)&#123;</div><div class="line">  alert(x)  <span class="comment">//不起作用，不能用for in 循环Set集合</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> x <span class="keyword">of</span> s)&#123;</div><div class="line">  alert(x)  <span class="comment">//拿到的是Set集合每个元素的值</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//遍历Map集合</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> x <span class="keyword">in</span> m)&#123;</div><div class="line">  alert(x)  <span class="comment">//不起作用，不能用for in 循环Map集合</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> x <span class="keyword">of</span> m)&#123;</div><div class="line">  alert(x[<span class="number">0</span>] + <span class="string">"="</span> + x[<span class="number">1</span>])  <span class="comment">//键和值都能拿到</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　　<span class="keyword">this</span>.x = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> Test();</div><div class="line">alert(o.x); <span class="comment">// 1</span></div><div class="line"></div><div class="line"><span class="comment">// 为了表明这时this不是全局对象，我对代码做一些改变：</span></div><div class="line"><span class="keyword">var</span> x = <span class="number">2</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.x = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> test();</div><div class="line">alert(x); <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<h2 id="apply调用"><a href="#apply调用" class="headerlink" title="apply调用"></a>apply调用</h2><blockquote>
+<p>pply()是函数对象的一个方法，它的作用是改变函数的调用对象，它的第一个参数就表示改变后的调用这个函数的对象。因此，this指的就是这第一个参数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  alert(<span class="keyword">this</span>.x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> o=&#123;&#125;;</div><div class="line">o.x = <span class="number">1</span>;</div><div class="line">o.m = test;</div><div class="line">o.m.apply(); <span class="comment">//0</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>apply()的参数为空时，默认调用全局对象。因此，这时的运行结果为0，证明this指的是全局对象。</p>
+<p>如果把最后一行代码修改为<br>　　o.m.apply(o); //1</p>
+<p>运行结果就变成了1，证明了这时this代表的是对象o。</p>
+</blockquote>
+
       
     </div>
     
@@ -390,8 +392,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/03/创建对象的几种方式/" rel="next" title="创建对象的几种方式">
-                <i class="fa fa-chevron-left"></i> 创建对象的几种方式
+              <a href="/2017/12/03/for语句/" rel="next" title="for语句">
+                <i class="fa fa-chevron-left"></i> for语句
               </a>
             
           </div>
@@ -399,10 +401,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/05/Javascript的this用法/" rel="prev" title="Javascript的this用法">
-                Javascript的this用法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#for"><span class="nav-number">1.</span> <span class="nav-text">for</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-in"><span class="nav-number">2.</span> <span class="nav-text">for in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-of"><span class="nav-number">3.</span> <span class="nav-text">for of</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#this总是指向调用函数的那个对象"><span class="nav-number">1.</span> <span class="nav-text">this总是指向调用函数的那个对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#纯粹的函数调用"><span class="nav-number">1.1.</span> <span class="nav-text">纯粹的函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作为对象方法的调用"><span class="nav-number">1.2.</span> <span class="nav-text">作为对象方法的调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作为构造函数调用"><span class="nav-number">1.3.</span> <span class="nav-text">作为构造函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apply调用"><span class="nav-number">1.4.</span> <span class="nav-text">apply调用</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -727,9 +725,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/12/03/for语句/';
-          this.page.identifier = '2017/12/03/for语句/';
-          this.page.title = 'for语句';
+          this.page.url = 'http://yoursite.com/2017/12/05/Javascript的this用法/';
+          this.page.identifier = '2017/12/05/Javascript的this用法/';
+          this.page.title = 'Javascript的this用法';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
