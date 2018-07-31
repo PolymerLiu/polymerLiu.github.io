@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  918
+                  938
                 </span>
               
 
@@ -378,7 +378,7 @@
 <ul>
 <li><p>语法</p>
 <h4 id="arrayObject-concat-arrayX-arrayX-……-arrayX"><a href="#arrayObject-concat-arrayX-arrayX-……-arrayX" class="headerlink" title="arrayObject.concat(arrayX,arrayX,……,arrayX)"></a>arrayObject.concat(arrayX,arrayX,……,arrayX)</h4><ol>
-<li>(arrayX)必需。该参数可以是具体的值，也可以是数组对象。可以是任意多个<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]; </div><div class="line"><span class="keyword">var</span> colors2 = colors.concat(<span class="string">"yellow"</span>, [<span class="string">"black"</span>, <span class="string">"brown"</span>]); <span class="comment">//  ["red", "green", "blue", "yellow", "black", "brown"]</span></div><div class="line"><span class="keyword">var</span> colors3 = colors.concat(); <span class="comment">// ["red", "green", "blue"]</span></div></pre></td></tr></table></figure>
+<li>(arrayX)必需。该参数可以是具体的值，也可以是数组对象。可以是任意多个<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]; </span><br><span class="line"><span class="keyword">var</span> colors2 = colors.concat(<span class="string">"yellow"</span>, [<span class="string">"black"</span>, <span class="string">"brown"</span>]); <span class="comment">//  ["red", "green", "blue", "yellow", "black", "brown"]</span></span><br><span class="line"><span class="keyword">var</span> colors3 = colors.concat(); <span class="comment">// ["red", "green", "blue"]</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -391,7 +391,7 @@
 <h1 id="join-方法-把数组中的所有元素放入一个字符串"><a href="#join-方法-把数组中的所有元素放入一个字符串" class="headerlink" title="join()  方法 把数组中的所有元素放入一个字符串"></a>join()  方法 把数组中的所有元素放入一个字符串</h1><ul>
 <li><p>语法</p>
 <h4 id="arrayObject-join-separator"><a href="#arrayObject-join-separator" class="headerlink" title="arrayObject.join(separator)"></a>arrayObject.join(separator)</h4><ol>
-<li>(separator)可选。指定要使用的分隔符。如果省略该参数，则使用逗号作为分隔符<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]; </div><div class="line"><span class="keyword">var</span> colors3 = colors.join(); <span class="comment">// "red,green,blue"</span></div><div class="line"><span class="keyword">var</span> colors4 = colors.join(<span class="string">'.'</span>); <span class="comment">// red.green.blue</span></div></pre></td></tr></table></figure>
+<li>(separator)可选。指定要使用的分隔符。如果省略该参数，则使用逗号作为分隔符<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]; </span><br><span class="line"><span class="keyword">var</span> colors3 = colors.join(); <span class="comment">// "red,green,blue"</span></span><br><span class="line"><span class="keyword">var</span> colors4 = colors.join(<span class="string">'.'</span>); <span class="comment">// red.green.blue</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -405,7 +405,7 @@
 <li><p>语法</p>
 <h4 id="arrayObject-slice-start-end"><a href="#arrayObject-slice-start-end" class="headerlink" title="arrayObject.slice(start,end)"></a>arrayObject.slice(start,end)</h4><ol>
 <li>(start)必需。规定从何处开始选取。如果是负数，那么从数组尾部开始算起</li>
-<li>(end)可选。规定从何处结束选取。如果是负数，那么从数组尾部开始算起<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>];</div><div class="line"><span class="keyword">var</span> colors2 = colors.slice(<span class="number">1</span>); <span class="comment">// ["green", "blue", "yellow", "purple"]  从第一项到末尾</span></div><div class="line"><span class="keyword">var</span> colors3 = colors.slice(<span class="number">1</span>,<span class="number">4</span>) <span class="comment">// ["green", "blue", "yellow"] 起始项到结束项，但不包含结束项</span></div><div class="line"><span class="comment">// 如果参数有负数，则参数加上数组长度。eg array.length=5, slice(-2,-1)与slice(3,4) 返回一样</span></div><div class="line"><span class="comment">// 如果结束位置小于起始位置，则返回空数组。</span></div></pre></td></tr></table></figure>
+<li>(end)可选。规定从何处结束选取。如果是负数，那么从数组尾部开始算起<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>];</span><br><span class="line"><span class="keyword">var</span> colors2 = colors.slice(<span class="number">1</span>); <span class="comment">// ["green", "blue", "yellow", "purple"]  从第一项到末尾</span></span><br><span class="line"><span class="keyword">var</span> colors3 = colors.slice(<span class="number">1</span>,<span class="number">4</span>) <span class="comment">// ["green", "blue", "yellow"] 起始项到结束项，但不包含结束项</span></span><br><span class="line"><span class="comment">// 如果参数有负数，则参数加上数组长度。eg array.length=5, slice(-2,-1)与slice(3,4) 返回一样</span></span><br><span class="line"><span class="comment">// 如果结束位置小于起始位置，则返回空数组。</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -425,7 +425,7 @@
 <h4 id="arrayObject-splice-index-howmany-item1-…-itemX"><a href="#arrayObject-splice-index-howmany-item1-…-itemX" class="headerlink" title="arrayObject.splice(index,howmany,item1,…..,itemX)"></a>arrayObject.splice(index,howmany,item1,…..,itemX)</h4><ol>
 <li>(index)    必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。</li>
 <li>(howmany)必需。要删除的项目数量。如果设置为 0，则不会删除项目。</li>
-<li>(itemX)可选。向数组添加的新项目。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>];</div><div class="line"><span class="keyword">var</span> removed = colors.splice(<span class="number">0</span>,<span class="number">1</span>); <span class="comment">// 删除第一项</span></div><div class="line">alert(colors); <span class="comment">// green,blue</span></div><div class="line">alert(removed); <span class="comment">// red，返回的数组中只包含一项</span></div><div class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">0</span>, <span class="string">"yellow"</span>, <span class="string">"orange"</span>); <span class="comment">// 从位置1 开始插入两项</span></div><div class="line">alert(colors); <span class="comment">// green,yellow,orange,blue</span></div><div class="line">alert(removed); <span class="comment">// 返回的是一个空数组</span></div><div class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="string">"red"</span>, <span class="string">"purple"</span>); <span class="comment">// 插入两项，删除一项</span></div><div class="line">alert(colors); <span class="comment">// green,red,purple,orange,blue</span></div><div class="line">alert(removed); <span class="comment">// yellow，返回的数组中只包含一项</span></div></pre></td></tr></table></figure>
+<li>(itemX)可选。向数组添加的新项目。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>];</span><br><span class="line"><span class="keyword">var</span> removed = colors.splice(<span class="number">0</span>,<span class="number">1</span>); <span class="comment">// 删除第一项</span></span><br><span class="line">alert(colors); <span class="comment">// green,blue</span></span><br><span class="line">alert(removed); <span class="comment">// red，返回的数组中只包含一项</span></span><br><span class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">0</span>, <span class="string">"yellow"</span>, <span class="string">"orange"</span>); <span class="comment">// 从位置1 开始插入两项</span></span><br><span class="line">alert(colors); <span class="comment">// green,yellow,orange,blue</span></span><br><span class="line">alert(removed); <span class="comment">// 返回的是一个空数组</span></span><br><span class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="string">"red"</span>, <span class="string">"purple"</span>); <span class="comment">// 插入两项，删除一项</span></span><br><span class="line">alert(colors); <span class="comment">// green,red,purple,orange,blue</span></span><br><span class="line">alert(removed); <span class="comment">// yellow，返回的数组中只包含一项</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -687,7 +687,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.3k</span>
+    <span title="Site words total count">15.5k</span>
   
 </div>
 
@@ -699,8 +699,6 @@
 <span id="busuanzi_container_site_pv">
     本文总阅读量<span id="busuanzi_value_page_pv"></span>次
 </span>
-
-<span class="post-count">博客全站共14.3k字</span>
 
 
 
