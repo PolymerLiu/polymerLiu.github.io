@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="J.L&#39;s BLOG">
 <meta property="og:description" content="#JS执行机制12345678910111213141516171819setTimeout(function()&amp;#123;    console.log(&apos;定时器开始啦&apos;) //主线程没任务就执行  d&amp;#125;);new Promise(function(resolve)&amp;#123;    console.log(&apos;马上执行for循环啦&apos;);//new Promise立即执行   和宏任务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-18T05:05:58.802Z">
+<meta property="og:updated_time" content="2018-08-18T05:13:04.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS执行机制">
 <meta name="twitter:description" content="#JS执行机制12345678910111213141516171819setTimeout(function()&amp;#123;    console.log(&apos;定时器开始啦&apos;) //主线程没任务就执行  d&amp;#125;);new Promise(function(resolve)&amp;#123;    console.log(&apos;马上执行for循环啦&apos;);//new Promise立即执行   和宏任务">
@@ -375,6 +375,7 @@
 
       
         <p>#JS执行机制<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定时器开始啦'</span>) <span class="comment">//主线程没任务就执行  d</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'马上执行for循环啦'</span>);<span class="comment">//new Promise立即执行   和宏任务属于同一队列  a</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++)&#123;</span><br><span class="line">        i == <span class="number">9999</span> &amp;&amp; resolve(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'执行then函数啦'</span>,i)<span class="comment">//resolve()执行才会打印   c</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'代码执行结束'</span>);<span class="comment">//   b</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 马上执行for循环啦</span></span><br><span class="line"><span class="comment">// 代码执行结束</span></span><br><span class="line"><span class="comment">// 执行then函数啦</span></span><br><span class="line"><span class="comment">// 定时器开始啦</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="1-javascript-事件循环"><a href="#1-javascript-事件循环" class="headerlink" title="1.javascript 事件循环"></a>1.javascript 事件循环</h2><p><a href="../img/执行机制.png">javascript 执行机制图片</a></p>
 <h3 id="导图要表达的内容用文字来表述的话："><a href="#导图要表达的内容用文字来表述的话：" class="headerlink" title="导图要表达的内容用文字来表述的话："></a>导图要表达的内容用文字来表述的话：</h3><ul>
 <li>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入Event Table并注册函数。</li>
@@ -586,7 +587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -693,7 +694,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.3k</span>
+    <span title="Site words total count">19.9k</span>
   
 </div>
 
