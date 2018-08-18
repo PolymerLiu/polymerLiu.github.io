@@ -242,6 +242,866 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/对象原型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/对象原型/" itemprop="url">对象原型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T13:06:48+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/18/对象原型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/18/对象原型/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,371
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="对象原型"><a href="#对象原型" class="headerlink" title="对象原型"></a>对象原型</h1><h4 id="JavaScript-常被描述为一种基于原型的语言-prototype-based-language-——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链-prototype-chain-，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。"><a href="#JavaScript-常被描述为一种基于原型的语言-prototype-based-language-——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链-prototype-chain-，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。" class="headerlink" title="JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。"></a>JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</h4><h4 id="准确地说，这些属性和方法定义在Object的构造器函数-constructor-functions-之上的prototype属性上，而非对象实例本身。"><a href="#准确地说，这些属性和方法定义在Object的构造器函数-constructor-functions-之上的prototype属性上，而非对象实例本身。" class="headerlink" title="准确地说，这些属性和方法定义在Object的构造器函数(constructor functions)之上的prototype属性上，而非对象实例本身。"></a>准确地说，这些属性和方法定义在Object的构造器函数(constructor functions)之上的prototype属性上，而非对象实例本身。</h4><h4 id="在传统的-OOP-中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在-JavaScript-中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是proto属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。"><a href="#在传统的-OOP-中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在-JavaScript-中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是proto属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。" class="headerlink" title="在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是proto属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。"></a>在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。</h4><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><blockquote>
+<ul>
+<li>理解对象的原型（可以通过Object.getPrototypeOf(obj)或者已被弃用的<strong>proto</strong>属性获得） <code>每个实例上都有的属性</code></li>
+<li>与构造函数的prototype属性之间的区别是很重要的。<code>构造函数的属性</code></li>
+<li>也就是说，Object.getPrototypeOf(new Foobar())和Foobar.prototype指向着同一个对象。</li>
+</ul>
+</blockquote>
+<h2 id="理解原型对象"><a href="#理解原型对象" class="headerlink" title="理解原型对象"></a>理解原型对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个构造器函数：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">first, last, age, gender, interests</span>) </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">this</span>.test=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">1</span>)&#125;</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//创建一个对象实例</span></span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person(<span class="string">'Bob'</span>, <span class="string">'Smith'</span>, <span class="number">32</span>, <span class="string">'male'</span>, [<span class="string">'music'</span>, <span class="string">'skiing'</span>]);</span><br></pre></td></tr></table></figure>
+<p><img src="&#39;../img/prototype.png&#39;" alt="实例图解"></p>
+<ul>
+<li>在图中你可以看到定义在 person1 的原型对象、即 Person() 构造器中的成员—— name、age、gender、interests、bio、greeting。</li>
+<li>同时也有一些其他成员—— watch、valueOf 等等——这些成员定义在 Person() 构造器的原型对象、即 Object 之上。</li>
+</ul>
+<blockquote>
+<p>注意：必须重申，原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过前面所说的“原型链”的方式。<br>注意：没有官方的方法用于直接访问一个对象的原型对象——原型链中的“连接”被定义在一个内部属性中，在 JavaScript 语言标准中用 [[prototype]] 表示（参见 ECMAScript）。然而，大多数现代浏览器还是提供了一个名为 <strong>proto</strong> （前后各有2个下划线）的属性，其包含了对象的原型。你可以尝试输入 person1.<strong>proto</strong> 和 person1.<strong>proto</strong>.<strong>proto</strong>，看看代码中的原型链是什么样的！</p>
+</blockquote>
+<h2 id="prototype属性：继承成员被定义的地方"><a href="#prototype属性：继承成员被定义的地方" class="headerlink" title="prototype属性：继承成员被定义的地方"></a>prototype属性：继承成员被定义的地方</h2><h3 id="可继承的"><a href="#可继承的" class="headerlink" title="可继承的"></a>可继承的</h3><ul>
+<li>继承的属性和方法是定义在 prototype 属性之上的,prototype 属性的值是一个对象，我们希望被原型链下游的对象继承的属性和方法，都被储存在其中。</li>
+<li>于是 Object.prototype.watch()、Object.prototype.valueOf() 等等成员，适用于任何继承自 Object() 的对象类型，包括使用构造器创建的新的对象实例。<h3 id="不可继承的"><a href="#不可继承的" class="headerlink" title="不可继承的"></a>不可继承的</h3></li>
+<li><p>Object.is()、Object.keys()，以及其他不在 prototype 对象内的成员，不会被“对象实例”或“继承自 Object() 的对象类型”所继承。这些方法/属性仅能被 Object() 构造器自身使用。</p>
+<blockquote>
+<p>注意：这看起来很奇怪——构造器本身就是函数，你怎么可能在构造器这个函数中定义一个方法呢？其实函数也是一个对象类型，你可以查阅 Function()<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function</a> 构造器的参考文档以确认这一点。</p>
+</blockquote>
+<blockquote>
+<p>重要：prototype 属性大概是 JavaScript 中最容易混淆的名称之一。你可能会认为，this 关键字指向当前对象的原型对象，其实不是（还记得么？原型对象是一个内部对象，应当使用 <strong>proto</strong> 访问）。prototype 属性包含（指向）一个对象，你在这个对象中定义需要被继承的成员。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="修改原型"><a href="#修改原型" class="headerlink" title="修改原型"></a>修改原型</h2> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">first, last, age, gender, interests</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 属性与方法定义</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person(<span class="string">'Tammi'</span>, <span class="string">'Smith'</span>, <span class="number">32</span>, <span class="string">'neutral'</span>, [<span class="string">'music'</span>, <span class="string">'skiing'</span>, <span class="string">'kickboxing'</span>]);</span><br><span class="line"></span><br><span class="line">Person.prototype.farewell = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.name.first + <span class="string">' has left the building. Bye for now!'</span>);</span><br><span class="line">  <span class="comment">//整条继承链动态地更新了，任何由此构造器创建的对象实例都自动获得了这个方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="上方代码说明"><a href="#上方代码说明" class="headerlink" title="上方代码说明"></a>上方代码说明</h4><blockquote>
+<p>farewell()方法仍然可用于person1对象实例——旧有对象实例的可用功能被自动更新了。这证明了先前描述的原型链模型。这种继承模型下，上游对象的方法不会复制到下游的对象实例中；下游对象本身虽然没有定义这些方法，但浏览器会通过上溯原型链、从上游对象中找到它们。这种继承模型提供了一个强大而可扩展的功能系统。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>事实上，一种极其常见的对象定义模式是，在构造器（函数体）中定义属性、在 prototype 属性上定义方法。如此，构造器只包含属性定义，而方法则分装在不同的代码块，代码更具可读性。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造器及其属性定义</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params">a,b,c,d</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 属性定义</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义第一个方法</span></span><br><span class="line"></span><br><span class="line">Test.prototype.x = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义第二个方法</span></span><br><span class="line"></span><br><span class="line">Test.prototype.y = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等等……</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>参考文章<a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototypes" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototypes</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/JS执行机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/JS执行机制/" itemprop="url">JS执行机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T13:05:17+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/18/JS执行机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/18/JS执行机制/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,961
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#JS执行机制<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定时器开始啦'</span>) <span class="comment">//主线程没任务就执行  d</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'马上执行for循环啦'</span>);<span class="comment">//new Promise立即执行   和宏任务属于同一队列  a</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++)&#123;</span><br><span class="line">        i == <span class="number">9999</span> &amp;&amp; resolve(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'执行then函数啦'</span>,i)<span class="comment">//resolve()执行才会打印   c</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'代码执行结束'</span>);<span class="comment">//   b</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 马上执行for循环啦</span></span><br><span class="line"><span class="comment">// 代码执行结束</span></span><br><span class="line"><span class="comment">// 执行then函数啦</span></span><br><span class="line"><span class="comment">// 定时器开始啦</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="1-javascript-事件循环"><a href="#1-javascript-事件循环" class="headerlink" title="1.javascript 事件循环"></a>1.javascript 事件循环</h2><p><a href="../img/执行机制.png">javascript 执行机制图片</a></p>
+<h3 id="导图要表达的内容用文字来表述的话："><a href="#导图要表达的内容用文字来表述的话：" class="headerlink" title="导图要表达的内容用文字来表述的话："></a>导图要表达的内容用文字来表述的话：</h3><ul>
+<li>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入Event Table并注册函数。</li>
+<li>当指定的事情完成时，Event Table会将这个函数移入Event Queue。</li>
+<li>主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行。</li>
+<li>上述过程会不断重复，也就是常说的Event Loop(事件循环)。</li>
+</ul>
+<h3 id="ajax执行案例"><a href="#ajax执行案例" class="headerlink" title="ajax执行案例"></a>ajax执行案例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = [];</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url:www.javascript.com,</span><br><span class="line">    data:data,</span><br><span class="line">    success:<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'发送成功!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'代码执行结束'</span>);</span><br></pre></td></tr></table></figure>
+<p>###上面是一段简易的ajax请求代码：</p>
+<ul>
+<li>ajax进入Event Table，<code>注册回调函数success。</code></li>
+<li>执行console.log(‘代码执行结束’)。</li>
+<li>ajax事件完成，<code>回调函数success进入Event Queue。</code></li>
+<li>主线程从Event Queue<code>读取回调函数success并执行。</code></li>
+</ul>
+<h2 id="2-setTimeOut"><a href="#2-setTimeOut" class="headerlink" title="2.setTimeOut"></a>2.setTimeOut</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    task()</span><br><span class="line">&#125;,<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">sleep(<span class="number">10000000</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="这时候我们需要重新理解setTimeout的定义。我们先说上述代码是怎么执行的："><a href="#这时候我们需要重新理解setTimeout的定义。我们先说上述代码是怎么执行的：" class="headerlink" title="这时候我们需要重新理解setTimeout的定义。我们先说上述代码是怎么执行的："></a>这时候我们需要重新理解setTimeout的定义。我们先说上述代码是怎么执行的：</h3><ul>
+<li>task()进入Event Table并注册,计时开始。</li>
+<li>执行sleep函数，很慢，非常慢，计时仍在继续。</li>
+<li>3秒到了，计时事件timeout完成，task()进入Event Queue，但是sleep也太慢了吧，还没执行完，只好等着。</li>
+<li>sleep终于执行完了，task()终于从Event Queue进入了主线程执行。</li>
+</ul>
+<h3 id="上述的流程走完，我们知道setTimeout这个函数，是经过指定时间后，把要执行的任务-本例中为task-加入到Event-Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。"><a href="#上述的流程走完，我们知道setTimeout这个函数，是经过指定时间后，把要执行的任务-本例中为task-加入到Event-Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。" class="headerlink" title="上述的流程走完，我们知道setTimeout这个函数，是经过指定时间后，把要执行的任务(本例中为task())加入到Event Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。"></a>上述的流程走完，我们知道setTimeout这个函数，是经过指定时间后，把要执行的任务(本例中为task())加入到Event Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。</h3><h3 id="setTimeout-fn-0-的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行"><a href="#setTimeout-fn-0-的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行" class="headerlink" title="setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行"></a>setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行</h3><h2 id="3-setInterval"><a href="#3-setInterval" class="headerlink" title="3.setInterval"></a>3.setInterval</h2><h3 id="对于执行顺序来说，setInterval会每隔指定的时间将注册的函数置入Event-Queue，如果前面的任务耗时太久，那么同样需要等待。"><a href="#对于执行顺序来说，setInterval会每隔指定的时间将注册的函数置入Event-Queue，如果前面的任务耗时太久，那么同样需要等待。" class="headerlink" title="对于执行顺序来说，setInterval会每隔指定的时间将注册的函数置入Event Queue，如果前面的任务耗时太久，那么同样需要等待。"></a>对于执行顺序来说，setInterval会每隔指定的时间将注册的函数置入Event Queue，如果前面的任务耗时太久，那么同样需要等待。</h3><h3 id="唯一需要注意的一点是，对于setInterval-fn-ms-来说，我们已经知道不是每过ms秒会执行一次fn，而是每过ms秒，会有fn进入Event-Queue。一旦setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了。这句话请读者仔细品味。"><a href="#唯一需要注意的一点是，对于setInterval-fn-ms-来说，我们已经知道不是每过ms秒会执行一次fn，而是每过ms秒，会有fn进入Event-Queue。一旦setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了。这句话请读者仔细品味。" class="headerlink" title="唯一需要注意的一点是，对于setInterval(fn,ms)来说，我们已经知道不是每过ms秒会执行一次fn，而是每过ms秒，会有fn进入Event Queue。一旦setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了。这句话请读者仔细品味。"></a>唯一需要注意的一点是，对于setInterval(fn,ms)来说，我们已经知道不是每过ms秒会执行一次fn，而是每过ms秒，会有fn进入Event Queue。一旦setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了。这句话请读者仔细品味。</h3><h2 id="4-Promise与process-nextTick-callback"><a href="#4-Promise与process-nextTick-callback" class="headerlink" title="4.Promise与process.nextTick(callback)"></a>4.Promise与process.nextTick(callback)</h2><h3 id="我们进入正题，除了广义的同步任务和异步任务，我们对任务有更精细的定义："><a href="#我们进入正题，除了广义的同步任务和异步任务，我们对任务有更精细的定义：" class="headerlink" title="我们进入正题，除了广义的同步任务和异步任务，我们对任务有更精细的定义："></a>我们进入正题，除了广义的同步任务和异步任务，我们对任务有更精细的定义：</h3><ul>
+<li>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval</li>
+<li>micro-task(微任务)：Promise，process.nextTick</li>
+</ul>
+<h3 id="不同类型的任务会进入对应的Event-Queue，比如setTimeout和setInterval会进入相同的Event-Queue。"><a href="#不同类型的任务会进入对应的Event-Queue，比如setTimeout和setInterval会进入相同的Event-Queue。" class="headerlink" title="不同类型的任务会进入对应的Event Queue，比如setTimeout和setInterval会进入相同的Event Queue。"></a>不同类型的任务会进入对应的Event Queue，比如setTimeout和setInterval会进入相同的Event Queue。</h3><h3 id="事件循环的顺序，决定js代码的执行顺序。进入整体代码-宏任务-后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。听起来有点绕，我们用文章最开始的一段代码说明："><a href="#事件循环的顺序，决定js代码的执行顺序。进入整体代码-宏任务-后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。听起来有点绕，我们用文章最开始的一段代码说明：" class="headerlink" title="事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。听起来有点绕，我们用文章最开始的一段代码说明："></a>事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。听起来有点绕，我们用文章最开始的一段代码说明：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise'</span>);</span><br><span class="line">    <span class="comment">//resolve()</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'then'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'console'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// promise</span></span><br><span class="line"><span class="comment">// console</span></span><br><span class="line"><span class="comment">// then    需要resolve()才会执行</span></span><br><span class="line"><span class="comment">// setTimeout</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这段代码作为宏任务，进入主线程。</li>
+<li>先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)</li>
+<li>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。</li>
+<li>遇到console.log()，立即执行。</li>
+<li>好啦，整体代码script作为第一个宏任务执行结束，看看有哪些微任务？我们发现了then在微任务Event Queue里面，执行。</li>
+<li>ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中        setTimeout对应的回调函数，立即执行。</li>
+<li>结束。</li>
+</ul>
+<h3 id="事件循环，宏任务，微任务的关系如图所示："><a href="#事件循环，宏任务，微任务的关系如图所示：" class="headerlink" title="事件循环，宏任务，微任务的关系如图所示："></a>事件循环，宏任务，微任务的关系如图所示：</h3><p><a href="../img/事件循环.jpg">javascript 事件循环图片</a></p>
+<h1 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一块</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line"><span class="comment">//第二块</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// node 下才有process</span></span><br><span class="line">    <span class="comment">// process.nextTick(function() &#123;</span></span><br><span class="line">    <span class="comment">//     console.log('3');</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'4'</span>);</span><br><span class="line">        resolve();  </span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'5'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//第三块   node 下才有process</span></span><br><span class="line"><span class="comment">// process.nextTick(function() &#123;</span></span><br><span class="line"><span class="comment">//     console.log('6');</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"><span class="comment">//第四块</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'7'</span>);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'8'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//第五块</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'9'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//node 下才有process</span></span><br><span class="line">    <span class="comment">// process.nextTick(function() &#123;</span></span><br><span class="line">    <span class="comment">//     console.log('10');</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'11'</span>);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'12'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="第一轮事件循环流程分析如下："><a href="#第一轮事件循环流程分析如下：" class="headerlink" title="第一轮事件循环流程分析如下："></a>第一轮事件循环流程分析如下：</h3><ul>
+<li>整体script作为第一个宏任务进入主线程，遇到console.log，输出1。</li>
+<li>遇到setTimeout，其回调函数被分发到宏任务Event Queue中。我们暂且记为setTimeout1。</li>
+<li>遇到process.nextTick()，其回调函数被分发到微任务Event Queue中。我们记为process1。</li>
+<li>遇到Promise，new Promise直接执行，输出7。then被分发到微任务Event Queue中。我们记为then1。</li>
+<li>又遇到了setTimeout，其回调函数被分发到宏任务Event Queue中，我们记为setTimeout2。<h4 id="宏任务Event-Queue-setTimeout1-setTimeout2"><a href="#宏任务Event-Queue-setTimeout1-setTimeout2" class="headerlink" title="宏任务Event Queue    (setTimeout1  setTimeout2)"></a>宏任务Event Queue    (setTimeout1  setTimeout2)</h4><h4 id="微任务Event-Queue-process1-then1"><a href="#微任务Event-Queue-process1-then1" class="headerlink" title="微任务Event Queue   (process1   then1)"></a>微任务Event Queue   (process1   then1)</h4></li>
+<li>上表是第一轮事件循环宏任务结束时各Event Queue的情况，此时已经输出了1和7。</li>
+<li></li>
+<li>我们发现了process1和then1两个微任务。</li>
+<li></li>
+<li>执行process1,输出6。</li>
+<li>执行then1，输出8。</li>
+<li>好了，第一轮事件循环正式结束，这一轮的结果是输出1，7，6，8。</li>
+</ul>
+<h3 id="那么第二轮事件循环从setTimeout1宏任务开始："><a href="#那么第二轮事件循环从setTimeout1宏任务开始：" class="headerlink" title="那么第二轮事件循环从setTimeout1宏任务开始："></a>那么第二轮事件循环从setTimeout1宏任务开始：</h3><ul>
+<li>首先输出2。接下来遇到了process.nextTick()，同样将其分发到微任务Event Queue中，记为process2。new Promise立即执行输出4，then也分发到微任务Event Queue中，记为then2。<h4 id="宏任务Event-Queue-setTimeout2"><a href="#宏任务Event-Queue-setTimeout2" class="headerlink" title="宏任务Event Queue  (setTimeout2)"></a>宏任务Event Queue  (setTimeout2)</h4><h4 id="宏任务Event-Queue-process2-then2"><a href="#宏任务Event-Queue-process2-then2" class="headerlink" title="宏任务Event Queue  (process2  then2)"></a>宏任务Event Queue  (process2  then2)</h4></li>
+<li>第二轮事件循环宏任务结束，我们发现有process2和then2两个微任务可以执行。</li>
+<li>输出3。</li>
+<li>输出5。</li>
+<li>第二轮事件循环结束，第二轮输出2，4，3，5。</li>
+</ul>
+<h3 id="第三轮事件循环开始，此时只剩setTimeout2了，执行。"><a href="#第三轮事件循环开始，此时只剩setTimeout2了，执行。" class="headerlink" title="第三轮事件循环开始，此时只剩setTimeout2了，执行。"></a>第三轮事件循环开始，此时只剩setTimeout2了，执行。</h3><ul>
+<li>直接输出9。</li>
+<li>将process.nextTick()分发到微任务Event Queue中。记为process3。</li>
+<li>直接执行new Promise，输出11。</li>
+<li>将then分发到微任务Event Queue中，记为then3。<h4 id="宏任务Event-Queue"><a href="#宏任务Event-Queue" class="headerlink" title="宏任务Event Queue  ()"></a>宏任务Event Queue  ()</h4><h4 id="宏任务Event-Queue-process3-then3"><a href="#宏任务Event-Queue-process3-then3" class="headerlink" title="宏任务Event Queue  (process3  then3)"></a>宏任务Event Queue  (process3  then3)</h4></li>
+<li>第三轮事件循环宏任务执行结束，执行两个微任务process3和then3。</li>
+<li>输出10。</li>
+<li>输出12。</li>
+<li>第三轮事件循环结束，第三轮输出9，11，10，12。</li>
+</ul>
+<h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><ul>
+<li><p>微任务和宏任务还有很多种类，比如setImmediate()等等，执行都是有共同点的，有兴趣的同学可以自行了解。Immediate(直接的，立即的)</p>
+</li>
+<li><p>(2)事件循环Event Loop     事件循环是js实现异步的一种方法，也是js的执行机制。</p>
+</li>
+</ul>
+<p><a href="https://juejin.im/post/59e85eebf265da430d571f89#heading-4" target="_blank" rel="noopener">JavaScript 执行机制</a></p>
+<p><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">阮一峰老师的Promise</a></p>
+<p>github Token 52ab37b3c3a7ad706322312f876bc881d495f624<br>GIST ID :  90dbfe5e4fafe8bcd4566f2760f78510 .</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/JavaScript定时器与执行机制解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/JavaScript定时器与执行机制解析/" itemprop="url">JavaScript定时器与执行机制解析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T13:03:15+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/18/JavaScript定时器与执行机制解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/18/JavaScript定时器与执行机制解析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  882
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript定时器与执行机制解析"><a href="#JavaScript定时器与执行机制解析" class="headerlink" title="JavaScript定时器与执行机制解析"></a>JavaScript定时器与执行机制解析</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i,<span class="string">','</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i,<span class="string">'&gt;&gt;&gt;'</span>)</span><br><span class="line"></span><br><span class="line"> Wed May <span class="number">09</span> <span class="number">2018</span> <span class="number">22</span>:<span class="number">54</span>:<span class="number">19</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">5</span> <span class="string">"&gt;&gt;&gt;"</span></span><br><span class="line"> <span class="literal">undefined</span></span><br><span class="line"> Wed May <span class="number">09</span> <span class="number">2018</span> <span class="number">22</span>:<span class="number">54</span>:<span class="number">20</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">5</span> <span class="string">","</span></span><br><span class="line"> Wed May <span class="number">09</span> <span class="number">2018</span> <span class="number">22</span>:<span class="number">54</span>:<span class="number">20</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">5</span> <span class="string">","</span></span><br><span class="line"> Wed May <span class="number">09</span> <span class="number">2018</span> <span class="number">22</span>:<span class="number">54</span>:<span class="number">21</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">5</span> <span class="string">","</span></span><br><span class="line"> Wed May <span class="number">09</span> <span class="number">2018</span> <span class="number">22</span>:<span class="number">54</span>:<span class="number">21</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">5</span> <span class="string">","</span></span><br><span class="line"> Wed May <span class="number">09</span> <span class="number">2018</span> <span class="number">22</span>:<span class="number">54</span>:<span class="number">21</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">5</span> <span class="string">","</span></span><br><span class="line"><span class="string">`循环执行过程中，几乎同时设置了 5 个定时器`</span>，一般情况下，这些定时器都会在 <span class="number">1</span> 秒之后触发，而循环完的输出是立即执行的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Immediate  立即的，直接的</span><br></pre></td></tr></table></figure>
+<p>02808c9bb261ab08c476fa245901aadfe760df3b</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;  <span class="comment">// j = i</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log( j,<span class="string">','</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;) (i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( i,<span class="string">'&gt;&gt;&gt;'</span>);</span><br><span class="line"></span><br><span class="line"><span class="number">5</span> <span class="string">"&gt;&gt;&gt;"</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line"><span class="number">0</span> <span class="string">","</span></span><br><span class="line"><span class="number">1</span> <span class="string">","</span></span><br><span class="line"><span class="number">2</span> <span class="string">","</span></span><br><span class="line"><span class="number">3</span> <span class="string">","</span></span><br><span class="line"><span class="number">4</span> <span class="string">","</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, j);</span><br><span class="line">    &#125;, <span class="number">1000</span>, i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//////////////////////////////////</span></span><br><span class="line"><span class="keyword">var</span> output = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    output(i);  <span class="comment">// 这里传过去的 i 值被复制了</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line"></span><br><span class="line">Sat May <span class="number">12</span> <span class="number">2018</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">41</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">5</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">Sat May <span class="number">12</span> <span class="number">2018</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">42</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">0</span></span><br><span class="line">Sat May <span class="number">12</span> <span class="number">2018</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">42</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">1</span></span><br><span class="line">Sat May <span class="number">12</span> <span class="number">2018</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">42</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">2</span></span><br><span class="line">Sat May <span class="number">12</span> <span class="number">2018</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">42</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">3</span></span><br><span class="line">Sat May <span class="number">12</span> <span class="number">2018</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">42</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//每隔一秒打印一次</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;  <span class="comment">// j = i</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log( j,<span class="string">','</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>*j);</span><br><span class="line">    &#125;) (i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( i,<span class="string">'&gt;&gt;&gt;'</span>);</span><br><span class="line">&#125;,i*<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">   <span class="number">0</span> <span class="string">","</span></span><br><span class="line">   <span class="number">1</span> <span class="string">","</span></span><br><span class="line">   <span class="number">2</span> <span class="string">","</span></span><br><span class="line">   <span class="number">3</span> <span class="string">","</span></span><br><span class="line">   <span class="number">4</span> <span class="string">","</span></span><br><span class="line">   <span class="number">5</span> <span class="string">"&gt;&gt;&gt;"</span></span><br></pre></td></tr></table></figure>
+<p>##采用Promise写法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//相比而言，笔者更倾向于下面这样看起来更简洁的代码，要知道编程风格也是很多面试官重点考察的点，代码阅读时的颗粒度更小，模块化更好，无疑会是加分点。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> tasks = []; <span class="comment">// 这里存放异步操作的 Promise</span></span><br><span class="line"><span class="keyword">const</span> output = <span class="function">(<span class="params">i</span>) =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;, <span class="number">1000</span> * i);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成全部的异步操作</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    tasks.push(output(i));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步操作完成之后，输出最后的 i</span></span><br><span class="line"><span class="built_in">Promise</span>.all(tasks).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="ES7-‘async-await’"><a href="#ES7-‘async-await’" class="headerlink" title="ES7  ‘async/await’"></a>ES7  ‘async/await’</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sleep = <span class="function">(<span class="params">timeountMS</span>) =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(resolve, timeountMS);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;  <span class="comment">// 声明即执行的 async 函数表达式</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// debugger</span></span><br><span class="line">        <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i+<span class="string">'&gt;&gt;&gt;'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">Mon May <span class="number">14</span> <span class="number">2018</span> <span class="number">11</span>:<span class="number">47</span>:<span class="number">13</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="string">"0&gt;&gt;&gt;"</span></span><br><span class="line">Mon May <span class="number">14</span> <span class="number">2018</span> <span class="number">11</span>:<span class="number">47</span>:<span class="number">14</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="string">"1&gt;&gt;&gt;"</span></span><br><span class="line">Mon May <span class="number">14</span> <span class="number">2018</span> <span class="number">11</span>:<span class="number">47</span>:<span class="number">15</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="string">"2&gt;&gt;&gt;"</span></span><br><span class="line">Mon May <span class="number">14</span> <span class="number">2018</span> <span class="number">11</span>:<span class="number">47</span>:<span class="number">16</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="string">"3&gt;&gt;&gt;"</span></span><br><span class="line">Mon May <span class="number">14</span> <span class="number">2018</span> <span class="number">11</span>:<span class="number">47</span>:<span class="number">17</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="string">"4&gt;&gt;&gt;"</span></span><br><span class="line">Mon May <span class="number">14</span> <span class="number">2018</span> <span class="number">11</span>:<span class="number">47</span>:<span class="number">18</span> GMT+<span class="number">0800</span> (中国标准时间) <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://www.alloyteam.com/2016/05/javascript-timer/" target="_blank" rel="noopener">JavaScript定时器与执行机制解析</a></p>
+<p><a href="https://juejin.im/post/58f1fa6a44d904006cf25d22" target="_blank" rel="noopener">破解前端面试（80% 应聘者不及格系列）从闭包说起</a><br><a href="https://juejin.im/post/58f558efac502e006c3e5c97" target="_blank" rel="noopener">破解前端面试（80% 应聘者不及格系列）：从 DOM 说起</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/ES6/" itemprop="url">ES6学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T12:44:15+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/18/ES6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/18/ES6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  568
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><h2 id="Promise-基本用法"><a href="#Promise-基本用法" class="headerlink" title="Promise 基本用法"></a>Promise 基本用法</h2><h4 id="下面代码创造了一个Promise实例"><a href="#下面代码创造了一个Promise实例" class="headerlink" title="下面代码创造了一个Promise实例"></a>下面代码创造了一个Promise实例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。"><a href="#Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。" class="headerlink" title="Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。"></a>Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// success   第一个回调函数是Promise对象的状态变为resolved时调用，</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// failure   第二个回调函数是Promise对象的状态变为rejected时调用。</span></span><br><span class="line"></span><br><span class="line">&#125;); <span class="comment">// 其中，第二个函数是可选的，不一定要提供</span></span><br></pre></td></tr></table></figure>
+<h3 id="下面是一个Promise对象的简单例子。"><a href="#下面是一个Promise对象的简单例子。" class="headerlink" title="下面是一个Promise对象的简单例子。"></a>下面是一个Promise对象的简单例子。</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(resolve, ms, <span class="string">'done'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">timeout(<span class="number">100</span>).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//上面代码中，timeout方法返回一个Promise实例，表示一段时间以后才会发生的结果。过了指定的时间（ms参数）以后，Promise实例的状态变为resolved，就会触发then方法绑定的回调函数。</span></span><br></pre></td></tr></table></figure>
+<h2 id="调用resolve或reject并不会终结-Promise-的参数函数的执行。"><a href="#调用resolve或reject并不会终结-Promise-的参数函数的执行。" class="headerlink" title="调用resolve或reject并不会终结 Promise 的参数函数的执行。"></a>调用resolve或reject并不会终结 Promise 的参数函数的执行。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="params">r</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(r);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//上面代码中，调用resolve(1)以后，后面的console.log(2)还是会执行，并且会首先打印出来。这是因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务。</span></span><br></pre></td></tr></table></figure>
+<h2 id="提示注意。"><a href="#提示注意。" class="headerlink" title="提示注意。"></a>提示注意。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一般来说，调用resolve或reject以后，Promise 的使命就完成了，后继操作应该放到then方法里面，而不应该直接写在resolve或reject的后面。所以，最好在它们前面加上return语句，这样就不会有意外。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> resolve(<span class="number">1</span>);</span><br><span class="line">  <span class="comment">// 后面的语句不会执行</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Promise-新建后就会立即执行。"><a href="#Promise-新建后就会立即执行。" class="headerlink" title="Promise 新建后就会立即执行。"></a>Promise 新建后就会立即执行。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Promise'</span>); <span class="comment">//Promise 新建后立即执行，所以首先输出的是Promise</span></span><br><span class="line">  resolve(); </span><br><span class="line">  <span class="comment">//resolve();  注释掉就不会打印 resolved</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'resolved.'</span>);<span class="comment">//  然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hi!'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Promise</span></span><br><span class="line"><span class="comment">// Hi!</span></span><br><span class="line"><span class="comment">// resolved</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/居中案例/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1451,732 +2311,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/29/伪类选择器-nth-of-type和-nth-child/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeffrey Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J.L's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/29/伪类选择器-nth-of-type和-nth-child/" itemprop="url">伪类选择器:nth-of-type和:nth-child</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T00:10:55+08:00">
-                2017-11-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/29/伪类选择器-nth-of-type和-nth-child/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/29/伪类选择器-nth-of-type和-nth-child/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  146
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>E:nth-of-type(n)匹配的是同类型中的第n个同级兄弟元素E</p>
-<p>E:nth-child(n)匹配的是父元素中的第n个子元素E</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/29/伪类选择器-nth-of-type和-nth-child/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/27/两个viewport的故事/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeffrey Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J.L's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/27/两个viewport的故事/" itemprop="url">两个viewport的故事</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-27T19:33:50+08:00">
-                2017-11-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/27/两个viewport的故事/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/27/两个viewport的故事/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,303
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="概念：设备像素和CSS像素"><a href="#概念：设备像素和CSS像素" class="headerlink" title="概念：设备像素和CSS像素"></a>概念：设备像素和CSS像素</h3><p>你需要明白的第一个概念是CSS像素，以及它和设备像素的区别。</p>
-<p>设备像素是我们直觉上觉得「靠谱」的像素。这些像素为你所使用的各种设备都提供了正规的分辨率，并且其值可以（通常情况下）从screen.width/height属性中读出。</p>
-<p>如果你给一个元素设置了width: 128px的属性，并且你的显示器是1024px宽，当你最大化你的浏览器屏幕，这个元素将会在你的显示器上重复显示8次（大概是这样；我们先忽略那些微妙的地方）。</p>
-<p>如果用户进行缩放，那么计算方式将会发生变化。如果用户放大到200%，那么你的那个拥有width: 128px属性的元素在1024px宽的显示器上只会重复显示4次。</p>
-<p>现代浏览器中实现缩放的方式无怪乎都是「拉伸」像素。所以，元素的宽度并没有从128个像素被修改为256个像素；相反是<strong>实际像素</strong>被放大了两倍。形式上，元素仍然是128个CSS像素宽，即使它占据了256个设备像素的空间。</p>
-<p>换句话说，放大到200%使一个CSS像素变成为一个设备像素的四倍。（宽度2倍，高度2倍，总共4倍）</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/27/两个viewport的故事/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/开发技巧总结CSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeffrey Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J.L's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/16/开发技巧总结CSS/" itemprop="url">开发技巧总结CSS</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T09:08:34+08:00">
-                2017-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/16/开发技巧总结CSS/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/16/开发技巧总结CSS/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  617
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="让元素在你的视野消失"><a href="#让元素在你的视野消失" class="headerlink" title="让元素在你的视野消失"></a>让元素在你的视野消失</h1><h3 id="设置display-none-该元素从文档流中删除，对布局无影响"><a href="#设置display-none-该元素从文档流中删除，对布局无影响" class="headerlink" title="设置display:none(该元素从文档流中删除，对布局无影响)"></a>设置display:none(该元素从文档流中删除，对布局无影响)</h3><blockquote>
-<ul>
-<li>优点<pre><code>* 简单暴力，不需要多余代码
-</code></pre></li>
-<li>缺点<pre><code>* 元素从文档删除，对于seo不利
-</code></pre></li>
-</ul>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/开发技巧总结CSS/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/开发技巧总结JS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeffrey Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J.L's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/16/开发技巧总结JS/" itemprop="url">开发技巧总结JS</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T09:08:20+08:00">
-                2017-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/16/开发技巧总结JS/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/16/开发技巧总结JS/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  426
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="回调函数无法获取外部for循环-index之解法"><a href="#回调函数无法获取外部for循环-index之解法" class="headerlink" title="回调函数无法获取外部for循环 index之解法"></a>回调函数无法获取外部for循环 index之解法</h3>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/开发技巧总结JS/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2226,7 +2365,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2248,7 +2387,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -2317,7 +2456,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">15.5k</span>
+    <span title="Site words total count">20.3k</span>
   
 </div>
 
