@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="J.L&#39;s BLOG">
 <meta property="og:description" content="JavaScript 创建对象的 7 种方法工厂模式123456789function Person() &amp;#123;  var o = new Object();  o.name = &apos;hanmeimei&apos;;  o.say = function() &amp;#123;    alert(this.name);  &amp;#125;  return o;&amp;#125;var person1 = Person()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-11T16:51:11.621Z">
+<meta property="og:updated_time" content="2018-10-30T14:55:16.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建对象的7种方式">
 <meta name="twitter:description" content="JavaScript 创建对象的 7 种方法工厂模式123456789function Person() &amp;#123;  var o = new Object();  o.name = &apos;hanmeimei&apos;;  o.say = function() &amp;#123;    alert(this.name);  &amp;#125;  return o;&amp;#125;var person1 = Person()">
@@ -382,6 +382,7 @@
 <li>每次通过Person创建对象的时候，所有的say方法都是一样的，但是却存储了多次，浪费资源。</li>
 </ul>
 </blockquote>
+<a id="more"></a>
 <h3 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name=<span class="string">'abc'</span></span><br><span class="line">  <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person()</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>优点：</p>
@@ -581,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
