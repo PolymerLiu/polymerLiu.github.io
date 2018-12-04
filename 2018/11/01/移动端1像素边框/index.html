@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="专注于前端">
+<meta name="description" content="border-image 图片 实现1234.border-image-1px &amp;#123;    border-width: 1px 0;    -webkit-border-image: url(&apos;&apos;)&amp;#125;  缺点 要有图片，圆角会模糊  background-image 渐变实现12345678910.border &amp;#123;      background-image:linea">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端1像素边框">
 <meta property="og:url" content="http://yoursite.com/2018/11/01/移动端1像素边框/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="专注于前端">
+<meta property="og:description" content="border-image 图片 实现1234.border-image-1px &amp;#123;    border-width: 1px 0;    -webkit-border-image: url(&apos;&apos;)&amp;#125;  缺点 要有图片，圆角会模糊  background-image 渐变实现12345678910.border &amp;#123;      background-image:linea">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-31T16:32:28.085Z">
+<meta property="og:updated_time" content="2018-11-01T14:40:33.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端1像素边框">
-<meta name="twitter:description" content="专注于前端">
+<meta name="twitter:description" content="border-image 图片 实现1234.border-image-1px &amp;#123;    border-width: 1px 0;    -webkit-border-image: url(&apos;&apos;)&amp;#125;  缺点 要有图片，圆角会模糊  background-image 渐变实现12345678910.border &amp;#123;      background-image:linea">
 
 
 
@@ -314,7 +314,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  377
                 </span>
               
 
@@ -330,7 +330,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -351,7 +351,32 @@
       
 
       
-        
+        <h2 id="border-image-图片-实现"><a href="#border-image-图片-实现" class="headerlink" title="border-image 图片 实现"></a>border-image 图片 实现</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border-image-1px</span> &#123;</span><br><span class="line">    <span class="attribute">border-width</span>: <span class="number">1px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-border-image</span>: <span class="built_in">url</span>(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>缺点 要有图片，圆角会模糊</p>
+</blockquote>
+<h2 id="background-image-渐变实现"><a href="#background-image-渐变实现" class="headerlink" title="background-image 渐变实现"></a>background-image 渐变实现</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border</span> &#123;</span><br><span class="line">      <span class="attribute">background-image</span>:<span class="built_in">linear-gradient</span>(180deg, red, red 50%, transparent 50%),</span><br><span class="line">      <span class="built_in">linear-gradient</span>(270deg, red, red 50%, transparent 50%),</span><br><span class="line">      <span class="built_in">linear-gradient</span>(0deg, red, red 50%, transparent 50%),</span><br><span class="line">      <span class="built_in">linear-gradient</span>(90deg, red, red 50%, transparent 50%);</span><br><span class="line">      <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">1px</span>,<span class="number">1px</span> <span class="number">100%</span> ,<span class="number">100%</span> <span class="number">1px</span>, <span class="number">1px</span> <span class="number">100%</span>;</span><br><span class="line">      <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">      <span class="attribute">background-position</span>: top, right top,  bottom, left top;</span><br><span class="line">      <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>缺点， 圆角会模糊  优点，不用图片</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="viewport-rem实现"><a href="#viewport-rem实现" class="headerlink" title="viewport+rem实现"></a>viewport+rem实现</h2><h2 id="box-shadow-实现"><a href="#box-shadow-实现" class="headerlink" title="box-shadow 实现"></a>box-shadow 实现</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-shadow</span>:<span class="number">0</span> <span class="number">1px</span> <span class="number">1px</span> -<span class="number">1px</span> <span class="built_in">rgba</span>(0, 0, 0, 0.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>优点是圆角不是问题，缺点是颜色不好控制。</p>
+</blockquote>
+<h2 id="transform-scale-0-5-实现-推荐相当灵活"><a href="#transform-scale-0-5-实现-推荐相当灵活" class="headerlink" title="transform: scale(0.5) 实现 推荐相当灵活"></a>transform: scale(0.5) 实现 <code>推荐相当灵活</code></h2><ul>
+<li><p>用height：1px的div，然后根据媒体查询设置transform: scaleY(0.5);，</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">background</span>:<span class="number">#000</span>;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">    <span class="attribute">-webkit-transform-origin</span>:<span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用::after和::befor,设置border-bottom：1px solid #000,然后在缩放-webkit-transform: scaleY(0.5);可以实现两根边线的需求</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用::after设置border：1px solid #000; width:200%; height:200%,然后再缩放scaleY(0.5); 优点可以实现圆角，京东就是这么实现的，缺点是按钮添加active比较麻烦。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200%</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#bfbfbf</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scale</span>(0.5,0.5);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(0.5,0.5);</span><br><span class="line">    <span class="attribute">-webkit-transform-origin</span>: top left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>原文链接 [<a href="https://segmentfault.com/a/1190000007604842]" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007604842]</a></p>
+
       
     </div>
     
@@ -384,6 +409,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/06/面向对象编程/" rel="prev" title="面向对象编程">
+                面向对象编程 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -445,8 +474,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -465,7 +503,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -527,6 +565,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#border-image-图片-实现"><span class="nav-number">1.</span> <span class="nav-text">border-image 图片 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background-image-渐变实现"><span class="nav-number">2.</span> <span class="nav-text">background-image 渐变实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport-rem实现"><span class="nav-number">3.</span> <span class="nav-text">viewport+rem实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#box-shadow-实现"><span class="nav-number">4.</span> <span class="nav-text">box-shadow 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transform-scale-0-5-实现-推荐相当灵活"><span class="nav-number">5.</span> <span class="nav-text">transform: scale(0.5) 实现 推荐相当灵活</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -556,7 +610,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.1k</span>
+    <span title="Site words total count">26.3k</span>
   
 </div>
 

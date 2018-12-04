@@ -242,6 +242,583 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/跨域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/03/跨域/" itemprop="url">跨域</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T19:51:07+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/03/跨域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/12/03/跨域/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  793
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><h2 id="1、JSONP实现"><a href="#1、JSONP实现" class="headerlink" title="1、JSONP实现"></a>1、JSONP实现</h2><h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><ul>
+<li>优点: 无兼容性问题</li>
+<li>缺点: 只能发送get请求(如果要实现post,参考下边文章)<blockquote>
+<p>[‘<a href="https://segmentfault.com/a/1190000015597029#articleHeader5&#39;]" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015597029#articleHeader5&#39;]</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="JSONP实现方式"><a href="#JSONP实现方式" class="headerlink" title="JSONP实现方式"></a>JSONP实现方式</h3><blockquote>
+<p>它的基本思想是，网页通过添加一个<code>&lt;script&gt;</code>元素，向服务器请求JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。</p>
+</blockquote>
+<h4 id="首先，网页动态插入-lt-script-gt-元素，由它向跨源网址发出请求。-客户端代码"><a href="#首先，网页动态插入-lt-script-gt-元素，由它向跨源网址发出请求。-客户端代码" class="headerlink" title="首先，网页动态插入&lt;script&gt;元素，由它向跨源网址发出请求。(客户端代码)"></a>首先，网页动态插入<code>&lt;script&gt;</code>元素，由它向跨源网址发出请求。(客户端代码)</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  function addScriptTag(src) &#123;</span></span><br><span class="line"><span class="undefined">    var script = document.createElement('script');</span></span><br><span class="line"><span class="undefined">    script.setAttribute("type","text/javascript");</span></span><br><span class="line"><span class="undefined">    script.src = src;</span></span><br><span class="line"><span class="undefined">    document.body.appendChild(script);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  window.onload = function () &#123;</span></span><br><span class="line"><span class="undefined">    // addScriptTag('http://example.com/ip?callback=foo');</span></span><br><span class="line"><span class="undefined">    addScriptTag('http://localhost:3000/user?callback=foo');</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  function foo(data) &#123;</span></span><br><span class="line"><span class="undefined">    console.log('xxxxx',data)</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;script src="http://localhost:3000/user?callback=foo"&gt;&lt;/script&gt;--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面代码通过动态添加<code>&lt;script&gt;</code>元素，向服务器localhost:3000发出请求。注意，该请求的查询字符串有一个callback参数，用来指定回调函数的名字，这对于JSONP是必需的。</p>
+<h4 id="服务器端代码"><a href="#服务器端代码" class="headerlink" title="服务器端代码"></a>服务器端代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line">http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = &#123;<span class="attr">name</span>: <span class="string">'uthus'</span>&#125;</span><br><span class="line">    <span class="comment">// 获取查询参数callback，就是我们在客户端定义的jsonpCb</span></span><br><span class="line">    <span class="keyword">const</span> callback = url.parse(req.url, <span class="literal">true</span>).query.callback</span><br><span class="line">    <span class="keyword">if</span> (callback) &#123;</span><br><span class="line">        <span class="keyword">const</span> str = callback + <span class="string">'('</span> + <span class="built_in">JSON</span>.stringify(data) + <span class="string">')'</span></span><br><span class="line">        <span class="comment">// 以字符串的形式返回</span></span><br><span class="line">        res.end(str)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.end(<span class="string">'hello world'</span>)</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;).listen(<span class="number">3000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'xxxxxxxxxxx000'</span>, <span class="string">'listen at 3000'</span>);</span><br></pre></td></tr></table></figure>
+<p>服务器收到这个请求以后，会将数据放在回调函数的参数位置返回。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo(&#123;<span class="attr">name</span>: <span class="string">'uthus'</span>&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>由于<code>&lt;script&gt;</code>元素请求的脚本，直接作为代码运行。这时，只要浏览器定义了foo函数，该函数就会立即调用。作为参数的JSON数据被视为JavaScript对象，而不是字符串，因此避免了使用JSON.parse的步骤。</p>
+<h4 id="基于Promise-封装一个jsonp工具"><a href="#基于Promise-封装一个jsonp工具" class="headerlink" title="基于Promise,封装一个jsonp工具"></a>基于Promise,封装一个jsonp工具</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取随机字符串,用于拼接</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; prefix [前导名字]</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; num  [字符串长度]</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomName</span> (<span class="params">prefix, num</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> prefix + <span class="built_in">Math</span>.random().toString(<span class="number">36</span>).replace(<span class="regexp">/[^a-z]+/g</span>, <span class="string">''</span>).substr(<span class="number">0</span>, num)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建script标签</span></span><br><span class="line"><span class="comment"> * @param &#123;请求路径&#125; url </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createScript</span> (<span class="params">url</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>)</span><br><span class="line">	script.setAttribute(<span class="string">'type'</span>, <span class="string">'text/javascript'</span>)</span><br><span class="line">	script.setAttribute(<span class="string">'src'</span>, url)</span><br><span class="line">	script.async = <span class="literal">true</span></span><br><span class="line">	<span class="keyword">return</span> script</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现请求</span></span><br><span class="line"><span class="comment"> * @param &#123;路径&#125; url </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonp</span> (<span class="params">url</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> cbName = getRandomName(<span class="string">'callback'</span>)</span><br><span class="line">		<span class="built_in">window</span>[cbName] = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">			resolve(data)</span><br><span class="line">		&#125;</span><br><span class="line">		url += url.indexOf(<span class="string">'?'</span>) &gt; <span class="number">-1</span> ? <span class="string">'&amp;'</span> : <span class="string">'?'</span></span><br><span class="line">		<span class="keyword">const</span> script = createScript(<span class="string">`<span class="subst">$&#123;url&#125;</span>callback=<span class="subst">$&#123;cbName&#125;</span>`</span>)</span><br><span class="line">		script.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			script.onload = <span class="literal">null</span></span><br><span class="line">			<span class="keyword">if</span> (script.parentNode) &#123;</span><br><span class="line">				script.parentNode.removeChild(script)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">window</span>[cbName] = <span class="literal">null</span></span><br><span class="line">		&#125;</span><br><span class="line">		script.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			reject()</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">jsonp(<span class="string">'http://localhost:3000'</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="2、通过CORS-设置Access-Control-Allow-Origin为’-’"><a href="#2、通过CORS-设置Access-Control-Allow-Origin为’-’" class="headerlink" title="2、通过CORS 设置Access-Control-Allow-Origin为’*’"></a>2、通过CORS 设置Access-Control-Allow-Origin为’*’</h2><h3 id="3、Nginx反向代理"><a href="#3、Nginx反向代理" class="headerlink" title="3、Nginx反向代理"></a>3、Nginx反向代理</h3><p>参考文章</p>
+<blockquote>
+<p>[‘<a href="https://segmentfault.com/a/1190000015597029#articleHeader5&#39;]" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015597029#articleHeader5&#39;]</a></p>
+</blockquote>
+<blockquote>
+<p>浏览器同源政策及其规避方法[‘<a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html&#39;]" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html&#39;]</a></p>
+</blockquote>
+<blockquote>
+<p>跨域资源共享 CORS 详解[‘<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html&#39;]" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/cors.html&#39;]</a></p>
+</blockquote>
+<blockquote>
+<p>[‘<a href="https://segmentfault.com/a/1190000000718840&#39;]" target="_blank" rel="noopener">https://segmentfault.com/a/1190000000718840&#39;]</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/居中案例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/09/居中案例/" itemprop="url">居中案例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T22:04:28+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/09/居中案例/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/11/09/居中案例/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  425
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1-水平居中"><a href="#1-水平居中" class="headerlink" title="1.水平居中"></a>1.水平居中</h1><h2 id="1-1行内元素"><a href="#1-1行内元素" class="headerlink" title="1.1行内元素"></a>1.1行内元素</h2><ul>
+<li>text-align：center</li>
+</ul>
+<h2 id="1-2块级元素"><a href="#1-2块级元素" class="headerlink" title="1.2块级元素"></a>1.2块级元素</h2><ul>
+<li>margin：0 auto</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/09/居中案例/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/面向对象编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeffrey Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J.L's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/面向对象编程/" itemprop="url">面向对象编程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T21:05:18+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/06/面向对象编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/11/06/面向对象编程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  458
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><h4 id="面向对象的两个基本概念："><a href="#面向对象的两个基本概念：" class="headerlink" title="面向对象的两个基本概念："></a>面向对象的两个基本概念：</h4><ul>
+<li>类：类是对象的类型模板，例如，定义Student类来表示学生，类本身是一种类型，Student表示学生类型，但不表示任何具体的某个学生；</li>
+<li>实例：实例是根据类创建的对象，例如，根据Student类可以创建出xiaoming、xiaohong、xiaojun等多个实例，每个实例表示一个具体的学生，他们全都属于Student类型。</li>
+</ul>
+<h4 id="在JS中不区分类和实例的概念，，而是通过原型（prototype）来实现面向对象编程。"><a href="#在JS中不区分类和实例的概念，，而是通过原型（prototype）来实现面向对象编程。" class="headerlink" title="在JS中不区分类和实例的概念，，而是通过原型（prototype）来实现面向对象编程。"></a>在JS中不区分类和实例的概念，，而是通过原型（prototype）来实现面向对象编程。</h4><h3 id="创建一个xiaoming对象-通过obj-proto去改变一个对象的原型"><a href="#创建一个xiaoming对象-通过obj-proto去改变一个对象的原型" class="headerlink" title="创建一个xiaoming对象(通过obj.proto去改变一个对象的原型)"></a>创建一个xiaoming对象(通过obj.<strong>proto</strong>去改变一个对象的原型)</h3><blockquote>
+<p>obj.<strong>proto</strong>去改变一个对象的原型(低版本的IE也无法使用<code>__proto__</code>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先创建一个原型对象</span></span><br><span class="line"><span class="keyword">var</span> Student = &#123;</span><br><span class="line">    name: <span class="string">'Robot'</span>,</span><br><span class="line">    height: <span class="number">1.2</span>,</span><br><span class="line">    run: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' is running...'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//再创建一个xiaoming对象，目前该对象只有name属性</span></span><br><span class="line"><span class="keyword">var</span> xiaoming = &#123;</span><br><span class="line">    name: <span class="string">'小明'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//把xiaoming的原型指向了对象Student，看上去xiaoming仿佛是从Student继承下来的：</span></span><br><span class="line"><span class="comment">//xiaoming现在拥有Student的属性和方法</span></span><br><span class="line">xiaoming.__proto__ = Student;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  xiaoming.name //'小明'</span></span><br><span class="line"><span class="comment">//  Student.name //'Robot'</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="编写一个函数来创建xiaoming对象-基于Object-create-方法"><a href="#编写一个函数来创建xiaoming对象-基于Object-create-方法" class="headerlink" title="编写一个函数来创建xiaoming对象(基于Object.create()方法)"></a>编写一个函数来创建xiaoming对象(基于Object.create()方法)</h3><blockquote>
+<p>Object.create()方法可以传入一个原型对象，并创建一个基于该原型的新对象，但是新对象什么属性都没有<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原型对象:</span></span><br><span class="line"><span class="keyword">var</span> Student = &#123;</span><br><span class="line">    name: <span class="string">'Robot'</span>,</span><br><span class="line">    height: <span class="number">1.2</span>,</span><br><span class="line">    run: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' is running...'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createStudent</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 基于Student原型创建一个新对象:</span></span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">Object</span>.create(Student);</span><br><span class="line">    <span class="comment">// 初始化新对象:</span></span><br><span class="line">    s.name = name;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> xiaoming = createStudent(<span class="string">'小明'</span>);</span><br><span class="line">xiaoming.run(); <span class="comment">// 小明 is running...</span></span><br><span class="line">xiaoming.__proto__ === Student; <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>原文链接[‘<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499763408e24c210985d34edcabbca944b4239e20000&#39;]" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499763408e24c210985d34edcabbca944b4239e20000&#39;]</a></p>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/移动端1像素边框/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -316,7 +893,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  377
                 </span>
               
 
@@ -332,7 +909,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -354,9 +931,21 @@
 
       
         
-          
-            
-          
+          <h2 id="border-image-图片-实现"><a href="#border-image-图片-实现" class="headerlink" title="border-image 图片 实现"></a>border-image 图片 实现</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border-image-1px</span> &#123;</span><br><span class="line">    <span class="attribute">border-width</span>: <span class="number">1px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-border-image</span>: <span class="built_in">url</span>(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>缺点 要有图片，圆角会模糊</p>
+</blockquote>
+<h2 id="background-image-渐变实现"><a href="#background-image-渐变实现" class="headerlink" title="background-image 渐变实现"></a>background-image 渐变实现</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border</span> &#123;</span><br><span class="line">      <span class="attribute">background-image</span>:<span class="built_in">linear-gradient</span>(180deg, red, red 50%, transparent 50%),</span><br><span class="line">      <span class="built_in">linear-gradient</span>(270deg, red, red 50%, transparent 50%),</span><br><span class="line">      <span class="built_in">linear-gradient</span>(0deg, red, red 50%, transparent 50%),</span><br><span class="line">      <span class="built_in">linear-gradient</span>(90deg, red, red 50%, transparent 50%);</span><br><span class="line">      <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">1px</span>,<span class="number">1px</span> <span class="number">100%</span> ,<span class="number">100%</span> <span class="number">1px</span>, <span class="number">1px</span> <span class="number">100%</span>;</span><br><span class="line">      <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">      <span class="attribute">background-position</span>: top, right top,  bottom, left top;</span><br><span class="line">      <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>缺点， 圆角会模糊  优点，不用图片</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/01/移动端1像素边框/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -573,199 +1162,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/居中案例/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeffrey Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J.L's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/25/居中案例/" itemprop="url">居中案例</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T19:33:59+08:00">
-                2018-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/10/25/居中案例/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/10/25/居中案例/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  395
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-水平居中"><a href="#1-水平居中" class="headerlink" title="1.水平居中"></a>1.水平居中</h1><h2 id="1-1行内元素"><a href="#1-1行内元素" class="headerlink" title="1.1行内元素"></a>1.1行内元素</h2><ul>
-<li>text-align：center</li>
-</ul>
-<h2 id="1-2块级元素"><a href="#1-2块级元素" class="headerlink" title="1.2块级元素"></a>1.2块级元素</h2><ul>
-<li>margin：0 auto</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/25/居中案例/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/深拷贝与浅拷贝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -862,7 +1258,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  509
+                  528
                 </span>
               
 
@@ -878,7 +1274,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -1721,388 +2117,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/对象原型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeffrey Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J.L's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/18/对象原型/" itemprop="url">对象原型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T13:06:48+08:00">
-                2018-08-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/18/对象原型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/18/对象原型/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,371
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="对象原型"><a href="#对象原型" class="headerlink" title="对象原型"></a>对象原型</h1><h4 id="JavaScript-常被描述为一种基于原型的语言-prototype-based-language-——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链-prototype-chain-，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。"><a href="#JavaScript-常被描述为一种基于原型的语言-prototype-based-language-——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链-prototype-chain-，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。" class="headerlink" title="JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。"></a>JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</h4><h4 id="准确地说，这些属性和方法定义在Object的构造器函数-constructor-functions-之上的prototype属性上，而非对象实例本身。"><a href="#准确地说，这些属性和方法定义在Object的构造器函数-constructor-functions-之上的prototype属性上，而非对象实例本身。" class="headerlink" title="准确地说，这些属性和方法定义在Object的构造器函数(constructor functions)之上的prototype属性上，而非对象实例本身。"></a>准确地说，这些属性和方法定义在Object的构造器函数(constructor functions)之上的prototype属性上，而非对象实例本身。</h4><h4 id="在传统的-OOP-中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在-JavaScript-中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是proto属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。"><a href="#在传统的-OOP-中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在-JavaScript-中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是proto属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。" class="headerlink" title="在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是proto属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。"></a>在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。</h4><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><blockquote>
-<ul>
-<li>理解对象的原型（可以通过Object.getPrototypeOf(obj)或者已被弃用的<strong>proto</strong>属性获得） <code>每个实例上都有的属性</code></li>
-<li>与构造函数的prototype属性之间的区别是很重要的。<code>构造函数的属性</code></li>
-<li>也就是说，Object.getPrototypeOf(new Foobar())和Foobar.prototype指向着同一个对象。</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/18/对象原型/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/JS执行机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeffrey Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J.L's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/18/JS执行机制/" itemprop="url">JS执行机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T13:05:17+08:00">
-                2018-08-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/18/JS执行机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/18/JS执行机制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,961
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>#JS执行机制<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定时器开始啦'</span>) <span class="comment">//主线程没任务就执行  d</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'马上执行for循环啦'</span>);<span class="comment">//new Promise立即执行   和宏任务属于同一队列  a</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++)&#123;</span><br><span class="line">        i == <span class="number">9999</span> &amp;&amp; resolve(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'执行then函数啦'</span>,i)<span class="comment">//resolve()执行才会打印   c</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'代码执行结束'</span>);<span class="comment">//   b</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 马上执行for循环啦</span></span><br><span class="line"><span class="comment">// 代码执行结束</span></span><br><span class="line"><span class="comment">// 执行then函数啦</span></span><br><span class="line"><span class="comment">// 定时器开始啦</span></span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/18/JS执行机制/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2157,7 +2171,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2248,7 +2262,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.1k</span>
+    <span title="Site words total count">26.3k</span>
   
 </div>
 
