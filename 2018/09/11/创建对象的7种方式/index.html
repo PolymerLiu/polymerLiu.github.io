@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="JavaScript 创建对象的 7 种方法工厂模式123456789function Person() &amp;#123;  var o = new Object();  o.name = &apos;hanmeimei&apos;;  o.say = function() &amp;#123;    alert(this.name);  &amp;#125;  return o;&amp;#125;var person1 = Person()">
+<meta name="description" content="JavaScript 创建对象的 7 种方法工厂模式12345678910111213141516171819202122232425function Person() &amp;#123;  var o = new Object();  o.name = &apos;hanmeimei&apos;;  o.say = function() &amp;#123;    alert(this.name);  &amp;#125;  retur">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="创建对象的7种方式">
 <meta property="og:url" content="http://yoursite.com/2018/09/11/创建对象的7种方式/index.html">
 <meta property="og:site_name" content="J.L&#39;s BLOG">
-<meta property="og:description" content="JavaScript 创建对象的 7 种方法工厂模式123456789function Person() &amp;#123;  var o = new Object();  o.name = &apos;hanmeimei&apos;;  o.say = function() &amp;#123;    alert(this.name);  &amp;#125;  return o;&amp;#125;var person1 = Person()">
+<meta property="og:description" content="JavaScript 创建对象的 7 种方法工厂模式12345678910111213141516171819202122232425function Person() &amp;#123;  var o = new Object();  o.name = &apos;hanmeimei&apos;;  o.say = function() &amp;#123;    alert(this.name);  &amp;#125;  retur">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-30T14:55:16.455Z">
+<meta property="og:updated_time" content="2019-03-18T04:21:50.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建对象的7种方式">
-<meta name="twitter:description" content="JavaScript 创建对象的 7 种方法工厂模式123456789function Person() &amp;#123;  var o = new Object();  o.name = &apos;hanmeimei&apos;;  o.say = function() &amp;#123;    alert(this.name);  &amp;#125;  return o;&amp;#125;var person1 = Person()">
+<meta name="twitter:description" content="JavaScript 创建对象的 7 种方法工厂模式12345678910111213141516171819202122232425function Person() &amp;#123;  var o = new Object();  o.name = &apos;hanmeimei&apos;;  o.say = function() &amp;#123;    alert(this.name);  &amp;#125;  retur">
 
 
 
@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  962
+                  973
                 </span>
               
 
@@ -374,16 +374,7 @@
       
 
       
-        <h1 id="JavaScript-创建对象的-7-种方法"><a href="#JavaScript-创建对象的-7-种方法" class="headerlink" title="JavaScript 创建对象的 7 种方法"></a>JavaScript 创建对象的 7 种方法</h1><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  o.name = <span class="string">'hanmeimei'</span>;</span><br><span class="line">  o.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = Person();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>缺点：</p>
-<ul>
-<li>无法通过constructor识别对象，以为都是来自Object，无法得知来自Person</li>
-<li>每次通过Person创建对象的时候，所有的say方法都是一样的，但是却存储了多次，浪费资源。</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-<h3 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name=<span class="string">'abc'</span></span><br><span class="line">  <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person()</span><br></pre></td></tr></table></figure>
+        <h1 id="JavaScript-创建对象的-7-种方法"><a href="#JavaScript-创建对象的-7-种方法" class="headerlink" title="JavaScript 创建对象的 7 种方法"></a>JavaScript 创建对象的 7 种方法</h1><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  o.name = <span class="string">'hanmeimei'</span>;</span><br><span class="line">  o.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = Person();</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">&gt; 缺点：</span></span><br><span class="line"><span class="string">* 无法通过constructor识别对象，以为都是来自Object，无法得知来自Person</span></span><br><span class="line"><span class="string">* 每次通过Person创建对象的时候，所有的say方法都是一样的，但是却存储了多次，浪费资源。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;!-- more --&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 构造函数模式</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name=<span class="string">'abc'</span></span><br><span class="line">  <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person()</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>优点：</p>
 <ul>
@@ -582,7 +573,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -653,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-创建对象的-7-种方法"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 创建对象的 7 种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.0.1.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数模式"><span class="nav-number">1.0.2.</span> <span class="nav-text">构造函数模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式"><span class="nav-number">1.0.3.</span> <span class="nav-text">原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数和原型组合模式"><span class="nav-number">1.0.4.</span> <span class="nav-text">构造函数和原型组合模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态原型模式"><span class="nav-number">1.0.5.</span> <span class="nav-text">动态原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄生构造模式"><span class="nav-number">1.0.6.</span> <span class="nav-text">寄生构造模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳妥构造模式"><span class="nav-number">1.0.7.</span> <span class="nav-text">稳妥构造模式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-创建对象的-7-种方法"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 创建对象的 7 种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.0.1.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式"><span class="nav-number">1.0.2.</span> <span class="nav-text">原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数和原型组合模式"><span class="nav-number">1.0.3.</span> <span class="nav-text">构造函数和原型组合模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态原型模式"><span class="nav-number">1.0.4.</span> <span class="nav-text">动态原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄生构造模式"><span class="nav-number">1.0.5.</span> <span class="nav-text">寄生构造模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳妥构造模式"><span class="nav-number">1.0.6.</span> <span class="nav-text">稳妥构造模式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -675,7 +666,7 @@
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -689,7 +680,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">26.3k</span>
+    <span title="Site words total count">27.3k</span>
   
 </div>
 
